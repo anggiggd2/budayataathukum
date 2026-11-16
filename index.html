@@ -1,0 +1,2667 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Membangun Perilaku Taat Hukum - MPI Pendidikan Pancasila Kelas X</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <script>
+        // Global Image Fallback Handlers (Direct from assets/images/ folder)
+        window.handleLogoLoad = function(imgEl) {
+            if (!imgEl) return;
+            imgEl.classList.remove('hidden');
+            const fb = document.getElementById('top-bar-logo-fallback');
+            if (fb) fb.classList.add('hidden');
+        };
+
+        window.handleLogoFallback = function(imgEl) {
+            if (!imgEl) return;
+            const candidates = [
+                'assets/images/logo.png',
+                'assets/images/logo.jpg',
+                'assets/images/logo.jpeg',
+                'assets/images/logo.webp',
+                'assets/logo.png',
+                'assets/logo.jpg',
+                'logo.png',
+                'logo.jpg'
+            ];
+            let step = parseInt(imgEl.dataset.fallbackStep || '0', 10);
+            step++;
+            if (step < candidates.length) {
+                imgEl.dataset.fallbackStep = String(step);
+                imgEl.src = candidates[step];
+            } else {
+                imgEl.classList.add('hidden');
+                const fb = document.getElementById('top-bar-logo-fallback');
+                if (fb) fb.classList.remove('hidden');
+            }
+        };
+
+        window.handleProfileImgFallback = function(imgEl) {
+            if (!imgEl) return;
+            const candidates = [
+                'assets/images/profil.jpg',
+                'assets/images/profil.png',
+                'assets/images/posedepan.jpg',
+                'assets/images/posedepan.png',
+                'assets/profil.jpg',
+                'assets/posedepan.jpg',
+                'profil.jpg',
+                'posedepan.jpg'
+            ];
+            let step = parseInt(imgEl.dataset.fallbackStep || '0', 10);
+            step++;
+            if (step < candidates.length) {
+                imgEl.dataset.fallbackStep = String(step);
+                imgEl.src = candidates[step];
+            } else {
+                imgEl.classList.add('hidden');
+                const fb = document.getElementById('dev-profile-fallback');
+                if (fb) {
+                    fb.classList.remove('hidden');
+                    fb.classList.add('flex');
+                }
+            }
+        };
+
+        window.handleCoverBgLoad = function(imgEl) {
+            if (!imgEl) return;
+            imgEl.classList.remove('hidden');
+            imgEl.style.opacity = '1';
+            const overlay = document.getElementById('cover-bg-overlay');
+            if (overlay) {
+                overlay.className = 'absolute inset-0 bg-gradient-to-br from-slate-950/45 via-slate-900/25 to-slate-950/55 z-0 pointer-events-none transition-all duration-300';
+            }
+        };
+        window.handleCoverBgFallback = function(imgEl) {
+            if (!imgEl) return;
+            const candidates = [
+                'assets/images/bg.jpg',
+                'assets/images/bg.png',
+                'assets/images/bg.jpeg',
+                'assets/images/bg.webp',
+                'assets/images/background.jpg',
+                'assets/images/background.png',
+                'assets/images/background.jpeg',
+                'assets/images/latar.jpg',
+                'assets/images/latar.png',
+                'assets/bg.jpg',
+                'assets/bg.png',
+                'assets/background.jpg',
+                'assets/background.png',
+                'bg.jpg',
+                'bg.png',
+                'background.jpg',
+                'background.png'
+            ];
+            let step = parseInt(imgEl.dataset.fallbackStep || '0', 10);
+            step++;
+            if (step < candidates.length) {
+                imgEl.dataset.fallbackStep = String(step);
+                imgEl.src = candidates[step];
+            } else {
+                imgEl.classList.add('hidden');
+            }
+        };
+
+        window.handleGambar12Load = function(imgEl) {
+            if (!imgEl) return;
+            imgEl.classList.remove('hidden');
+            const fb = document.getElementById('gambar12-fallback');
+            if (fb) { fb.classList.add('hidden'); fb.classList.remove('flex'); }
+        };
+        window.handleGambar12Fallback = function(imgEl) {
+            if (!imgEl) return;
+            const candidates = [
+                'assets/images/gambar1_2.png',
+                'assets/images/gambar1_2.jpg',
+                'assets/images/gambar1_2.jpeg',
+                'assets/gambar1_2.png',
+                'assets/gambar1_2.jpg',
+                'gambar1_2.png',
+                'gambar1_2.jpg'
+            ];
+            let step = parseInt(imgEl.dataset.fallbackStep || '0', 10);
+            step++;
+            if (step < candidates.length) {
+                imgEl.dataset.fallbackStep = String(step);
+                imgEl.src = candidates[step];
+            } else {
+                imgEl.classList.add('hidden');
+                const fb = document.getElementById('gambar12-fallback');
+                if (fb) { fb.classList.remove('hidden'); fb.classList.add('flex'); }
+            }
+        };
+
+        window.handleAktivitas21Load = function(imgEl) {
+            if (!imgEl) return;
+            imgEl.classList.remove('hidden');
+            const fb = document.getElementById('aktivitas21-fallback');
+            if (fb) { fb.classList.add('hidden'); fb.classList.remove('flex'); }
+        };
+        window.handleAktivitas21Fallback = function(imgEl) {
+            if (!imgEl) return;
+            const candidates = [
+                'assets/images/aktivitas2_1.jpg',
+                'assets/images/aktivitas2_1.png',
+                'assets/images/aktivitas2_1.jpeg',
+                'assets/aktivitas2_1.jpg',
+                'assets/aktivitas2_1.png',
+                'aktivitas2_1.jpg',
+                'aktivitas2_1.png'
+            ];
+            let step = parseInt(imgEl.dataset.fallbackStep || '0', 10);
+            step++;
+            if (step < candidates.length) {
+                imgEl.dataset.fallbackStep = String(step);
+                imgEl.src = candidates[step];
+            } else {
+                imgEl.classList.add('hidden');
+                const fb = document.getElementById('aktivitas21-fallback');
+                if (fb) { fb.classList.remove('hidden'); fb.classList.add('flex'); }
+            }
+        };
+    </script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            user-select: none;
+            -webkit-user-select: none;
+            -webkit-touch-callout: none;
+            -webkit-tap-highlight-color: transparent;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        html, body {
+            position: fixed;
+            inset: 0;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            overscroll-behavior: none;
+            touch-action: none;
+            background-color: #020617;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #stage-scale-wrapper {
+            position: fixed;
+            inset: 0;
+            width: 100vw;
+            height: 100vh;
+            width: 100dvw;
+            height: 100dvh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #020617;
+            overflow: hidden;
+            overscroll-behavior: none;
+            touch-action: none;
+        }
+        .custom-scroll {
+            touch-action: pan-y pan-x;
+            overscroll-behavior: contain;
+            -webkit-overflow-scrolling: touch;
+        }
+        input, select, textarea {
+            user-select: text;
+            -webkit-user-select: text;
+            touch-action: manipulation;
+        }
+        /* Strict 16:9 1280x720 Base Stage - Responsive Fullscreen Scaling */
+        #app-stage-16x9 {
+            position: relative;
+            width: 1280px;
+            height: 720px;
+            min-width: 1280px;
+            max-width: 1280px;
+            min-height: 720px;
+            max-height: 720px;
+            aspect-ratio: 16 / 9;
+            flex-shrink: 0;
+            transform-origin: center center;
+            background: radial-gradient(circle at 50% 25%, #1e293b 0%, #090d16 70%, #020617 100%);
+            overflow: hidden;
+            box-shadow: 0 0 60px rgba(0, 0, 0, 0.9);
+            border: 1px solid rgba(251, 191, 36, 0.22);
+            will-change: transform;
+        }
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(251, 191, 36, 0.35);
+        }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #fef08a 0%, #fbbf24 45%, #f59e0b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .custom-scroll::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        .custom-scroll::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.7);
+            border-radius: 9999px;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: rgba(251, 191, 36, 0.65);
+            border-radius: 9999px;
+        }
+        .bento-card-hover {
+            transition: all 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .bento-card-hover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+            transform: skewX(-20deg);
+            transition: left 0.55s ease;
+            pointer-events: none;
+        }
+        .bento-card-hover:hover::before {
+            left: 140%;
+        }
+        .bento-card-hover:hover {
+            transform: translateY(-4px) scale(1.015);
+            box-shadow: 0 18px 34px -8px rgba(251, 191, 36, 0.35), inset 0 1px 0 0 rgba(255, 255, 255, 0.25);
+            border-color: rgba(251, 191, 36, 0.9);
+        }
+        .para-justify {
+            text-align: justify;
+            text-justify: inter-word;
+            line-height: 1.75;
+            font-size: 19px;
+        }
+        .item-justify {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.7rem;
+            width: 100%;
+            font-size: 19px;
+            line-height: 1.72;
+        }
+        .item-justify .item-marker {
+            flex-shrink: 0;
+            min-width: 1.8rem;
+            font-weight: 800;
+            line-height: 1.72;
+            text-align: left;
+        }
+        .item-justify .item-marker-dot {
+            flex-shrink: 0;
+            min-width: 1.3rem;
+            font-weight: 900;
+            line-height: 1.72;
+            text-align: center;
+        }
+        .item-justify .item-body {
+            flex: 1;
+            min-width: 0;
+            text-align: left;
+            line-height: 1.72;
+        }
+        .tts-cell {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            text-transform: uppercase;
+            border-radius: 8px;
+            transition: all 0.14s ease;
+            cursor: pointer;
+            user-select: none;
+        }
+        .tts-cell-num {
+            position: absolute;
+            top: 2px;
+            left: 3.5px;
+            font-size: 10px;
+            font-weight: 900;
+            line-height: 1;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+<div id="stage-scale-wrapper">
+<div id="app-stage-16x9">
+
+    <!-- UNIFIED TOP BAR -->
+    <header id="unified-top-bar" class="absolute top-0 left-0 right-0 h-14 z-40 px-5 flex items-center justify-between bg-slate-950/90 backdrop-blur-md border-b border-amber-400/25">
+        <div class="flex items-center gap-3 min-w-0">
+            <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-amber-400 via-amber-500 to-yellow-600 p-0.5 shadow-lg shadow-amber-500/25 flex items-center justify-center shrink-0 overflow-hidden relative">
+                <img id="top-bar-custom-logo" src="assets/images/logo.png" alt="Logo" class="w-full h-full object-cover rounded-[10px] hidden" onload="window.handleLogoLoad(this)" onerror="window.handleLogoFallback(this)">
+                <div id="top-bar-logo-fallback" class="w-full h-full rounded-[10px] bg-slate-950 flex items-center justify-center">
+                    <i class="fa-solid fa-scale-balanced text-amber-400 text-lg"></i>
+                </div>
+            </div>
+            <div class="leading-tight truncate">
+                <div class="text-xs font-extrabold tracking-wider text-amber-400 uppercase truncate">Pendidikan Pancasila • Kelas X</div>
+                <div class="text-sm font-black text-white tracking-tight truncate">MEMBANGUN PERILAKU TAAT HUKUM</div>
+            </div>
+        </div>
+
+        <div id="game-hud-center" class="hidden items-center gap-1.5">
+            <div class="flex items-center gap-1 bg-slate-900/95 border border-amber-400/35 p-1 rounded-xl">
+                <button id="tab-tts-lv1" onclick="switchTTSLevel(1)" class="px-2.5 py-1 rounded-lg text-[11px] font-extrabold transition bg-amber-400 text-slate-950 flex items-center gap-1"><span>Lv 1 (5)</span></button>
+                <button id="tab-tts-lv2" onclick="switchTTSLevel(2)" class="px-2.5 py-1 rounded-lg text-[11px] font-extrabold transition bg-slate-800/80 text-slate-400 hover:text-white flex items-center gap-1"><span>Lv 2 (5)</span></button>
+                <button id="tab-tts-lv3" onclick="switchTTSLevel(3)" class="px-2.5 py-1 rounded-lg text-[11px] font-extrabold transition bg-slate-800/80 text-slate-400 hover:text-white flex items-center gap-1"><span>Lv 3 (5)</span></button>
+                <button id="tab-tts-lv4" onclick="switchTTSLevel(4)" class="px-2.5 py-1 rounded-lg text-[11px] font-extrabold transition bg-slate-800/80 text-slate-400 hover:text-white flex items-center gap-1"><span>Lv 4 (7)</span></button>
+                <button id="tab-tts-lv5" onclick="switchTTSLevel(5)" class="px-2.5 py-1 rounded-lg text-[11px] font-extrabold transition bg-slate-800/80 text-slate-400 hover:text-white flex items-center gap-1"><span>Lv 5 (8)</span></button>
+            </div>
+            <button onclick="exitGameToCover()" class="px-2.5 py-1.5 rounded-xl bg-slate-800 hover:bg-rose-600 text-white text-xs font-bold flex items-center gap-1.5 border border-slate-600 transition" title="Kembali ke Menu Awal">
+                <i class="fa-solid fa-house"></i> <span>Menu</span>
+            </button>
+        </div>
+
+        <div class="flex items-center gap-2 shrink-0">
+            <div id="game-hud-score" class="hidden items-center gap-2.5 px-3.5 py-1 rounded-xl bg-slate-900/95 border border-amber-400/40 text-xs font-extrabold">
+                <span class="text-rose-400"><i class="fa-solid fa-lightbulb mr-1 text-amber-300"></i>Bantuan: <span id="hud-hints-val">12</span></span>
+                <span class="text-slate-600">•</span>
+                <span class="text-amber-300"><i class="fa-solid fa-trophy mr-1"></i><span id="hud-score-val">0</span></span>
+                <span class="text-slate-600">•</span>
+                <span class="text-emerald-300"><i class="fa-solid fa-check-double mr-1"></i><span id="hud-words-val">0/30</span></span>
+            </div>
+            <button id="btn-audio-toggle" onclick="toggleAudioMute()" class="w-9 h-9 rounded-xl bg-slate-900 hover:bg-slate-800 border border-amber-400/35 text-amber-300 flex items-center justify-center transition" title="Musik Latar Santai">
+                <i id="icon-audio-toggle" class="fa-solid fa-volume-high text-sm"></i>
+            </button>
+            <button onclick="toggleFullScreen()" class="w-9 h-9 rounded-xl bg-slate-900 hover:bg-slate-800 border border-amber-400/35 text-amber-300 flex items-center justify-center transition" title="Layar Penuh">
+                <i class="fa-solid fa-expand text-sm"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- MAIN COVER SCREEN (ELEGANT & BALANCED 16:9 BENTO HUB) -->
+    <main id="main-cover-screen" class="absolute inset-0 pt-14 px-12 pb-5 flex flex-col items-center justify-center z-20 overflow-hidden">
+        <img id="cover-custom-bg" src="assets/images/bg.jpg" alt="Latar Cover" class="absolute inset-0 w-full h-full object-cover object-center z-0 pointer-events-none transition-opacity duration-300" onload="window.handleCoverBgLoad(this)" onerror="window.handleCoverBgFallback(this)">
+        <div id="cover-bg-overlay" class="absolute inset-0 bg-gradient-to-br from-slate-950/60 via-slate-900/40 to-slate-950/65 z-0 pointer-events-none transition-all duration-300"></div>
+        <div class="absolute -top-24 -left-24 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-24 -right-24 w-80 h-80 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="relative z-10 w-full max-w-[1050px] h-[485px] grid grid-cols-12 gap-5 items-stretch my-auto">
+            <!-- LEFT HERO PANEL (5 COLS - COMPACT SO BACKGROUND IS VISIBLE) -->
+            <div class="col-span-5 glass-panel rounded-3xl p-5 flex flex-col justify-between relative overflow-hidden shadow-2xl border border-amber-400/45 bg-slate-900/75 backdrop-blur-md">
+                <div class="space-y-3 relative z-10">
+                    <div class="flex items-center justify-between gap-2">
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-500/20 border border-amber-400/50 text-amber-300 text-[10.5px] font-extrabold tracking-widest uppercase">
+                            <i class="fa-solid fa-shield-halved"></i> MPI Kurikulum Merdeka
+                        </span>
+                        <span class="px-2.5 py-0.5 rounded-lg bg-slate-800/90 border border-slate-700 text-slate-300 text-[10.5px] font-bold">
+                            Kelas X SMA/SMK
+                        </span>
+                    </div>
+
+                    <div class="pt-0.5">
+                        <div class="text-[11px] font-extrabold text-amber-400/95 uppercase tracking-widest mb-1">
+                            Bab 2 • Membangun Budaya Taat Hukum
+                        </div>
+                        <h1 class="text-[25px] font-black tracking-tight uppercase gold-gradient-text leading-[1.18] drop-shadow">
+                            MEMBANGUN PERILAKU TAAT HUKUM
+                        </h1>
+                    </div>
+
+                    <div class="p-3.5 rounded-2xl bg-slate-950/80 border border-sky-400/35 space-y-1.5 shadow-inner">
+                        <div class="text-[12px] font-extrabold text-sky-300 uppercase tracking-wider flex items-center gap-1.5">
+                            <i class="fa-solid fa-bookmark text-amber-400"></i> Sub-Pembahasan A:
+                        </div>
+                        <p class="text-[16px] font-bold text-slate-100 leading-snug">
+                            Membangun Kesadaran Hukum, Menerapkan Perilaku Taat Hukum, dan Menganalisis Kasus Pelanggaran Hak dan Pengingkaran Kewajiban
+                        </p>
+                    </div>
+                </div>
+
+                <div class="space-y-2 pt-2.5 border-t border-slate-800/80 relative z-10">
+                    <div class="flex items-center justify-between text-[13px] font-bold">
+                        <span class="text-slate-200 flex items-center gap-1.5">
+                            <i class="fa-solid fa-chart-line text-amber-400"></i> Progres Materi (10 Bagian):
+                        </span>
+                        <span id="cover-materi-progress-text" class="text-amber-400 font-extrabold">Bagian 1 / 10</span>
+                    </div>
+                    <div class="w-full h-2 rounded-full bg-slate-950 overflow-hidden border border-slate-700/80 p-0.5">
+                        <div id="cover-materi-progress-bar" class="h-full rounded-full bg-gradient-to-r from-amber-400 via-yellow-400 to-emerald-400 transition-all duration-300" style="width: 10%"></div>
+                    </div>
+                    <div id="cover-lock-notice" class="hidden px-3 py-1 rounded-xl bg-rose-950/95 border border-rose-400/60 text-rose-200 text-[11px] font-bold items-center gap-2">
+                        <i class="fa-solid fa-circle-exclamation text-amber-400 shrink-0"></i>
+                        <span>Pelajari <strong>Materi (Bagian 1–10)</strong> dahulu untuk membuka Kuis TTS!</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT BENTO NAVIGATION PANEL (7 COLS - COMPACT & BALANCED) -->
+            <div class="col-span-7 flex flex-col justify-between gap-3 h-full min-h-0">
+                <!-- PRIMARY FEATURE CARD: MATERI PEMBELAJARAN -->
+                <button onclick="openModal('modal-materi')" class="bento-card-hover glass-panel rounded-3xl px-5 py-3 flex items-center justify-between text-left group relative border border-amber-400/60 bg-slate-900/75 backdrop-blur-md h-[108px] shadow-xl shrink-0">
+                    <div class="flex items-center gap-4 min-w-0">
+                        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-amber-400/30 to-orange-500/20 border-2 border-amber-400/70 flex items-center justify-center text-amber-300 group-hover:scale-105 transition shrink-0 shadow-lg shadow-amber-500/15">
+                            <i class="fa-solid fa-book-open-reader text-3xl"></i>
+                        </div>
+                        <div class="space-y-1.5 min-w-0">
+                            <div class="text-[24px] font-black text-white group-hover:text-amber-300 tracking-tight uppercase leading-none transition truncate">MATERI PEMBELAJARAN</div>
+                            <div>
+                                <span id="badge-materi-status" class="inline-block px-3.5 py-0.5 rounded-full bg-amber-400 text-slate-950 font-extrabold text-[12px] uppercase shadow">Wajib Dipelajari</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-10 h-10 rounded-xl bg-amber-400/15 border border-amber-400/45 flex items-center justify-center text-amber-300 group-hover:bg-amber-400 group-hover:text-slate-950 group-hover:translate-x-1 transition shadow shrink-0">
+                        <i class="fa-solid fa-arrow-right text-lg"></i>
+                    </div>
+                </button>
+
+                <!-- 2x2 SUB-MENU GRID -->
+                <div class="grid grid-cols-2 grid-rows-2 gap-3 flex-1 min-h-0">
+                    <button onclick="openModal('modal-petunjuk')" class="bento-card-hover glass-panel rounded-3xl px-4 py-3 flex items-center justify-between text-left group border border-sky-400/45 bg-slate-900/75 backdrop-blur-md h-full">
+                        <div class="flex items-center gap-3.5 min-w-0">
+                            <div class="w-[56px] h-[56px] rounded-2xl bg-gradient-to-br from-sky-400/25 to-blue-600/20 border-2 border-sky-400/60 flex items-center justify-center text-sky-300 group-hover:scale-105 transition shrink-0 shadow-md">
+                                <i class="fa-solid fa-compass text-2xl"></i>
+                            </div>
+                            <div class="text-[20px] font-black text-white group-hover:text-sky-300 uppercase tracking-tight leading-tight transition">PETUNJUK MPI</div>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-sky-400/70 group-hover:text-sky-300 group-hover:translate-x-1 transition text-base shrink-0"></i>
+                    </button>
+
+                    <button onclick="openModal('modal-cptp')" class="bento-card-hover glass-panel rounded-3xl px-4 py-3 flex items-center justify-between text-left group border border-emerald-400/45 bg-slate-900/75 backdrop-blur-md h-full">
+                        <div class="flex items-center gap-3.5 min-w-0">
+                            <div class="w-[56px] h-[56px] rounded-2xl bg-gradient-to-br from-emerald-400/25 to-teal-600/20 border-2 border-emerald-400/60 flex items-center justify-center text-emerald-300 group-hover:scale-105 transition shrink-0 shadow-md">
+                                <i class="fa-solid fa-bullseye text-2xl"></i>
+                            </div>
+                            <div class="text-[20px] font-black text-white group-hover:text-emerald-300 uppercase tracking-tight leading-tight transition">CP &amp; TP</div>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-emerald-400/70 group-hover:text-emerald-300 group-hover:translate-x-1 transition text-base shrink-0"></i>
+                    </button>
+
+                    <button onclick="openModal('modal-profil')" class="bento-card-hover glass-panel rounded-3xl px-4 py-3 flex items-center justify-between text-left group border border-purple-400/45 bg-slate-900/75 backdrop-blur-md h-full">
+                        <div class="flex items-center gap-3.5 min-w-0">
+                            <div class="w-[56px] h-[56px] rounded-2xl bg-gradient-to-br from-purple-400/25 to-indigo-600/20 border-2 border-purple-400/60 flex items-center justify-center text-purple-300 group-hover:scale-105 transition shrink-0 shadow-md">
+                                <i class="fa-solid fa-user-tie text-2xl"></i>
+                            </div>
+                            <div class="text-[19px] font-black text-white group-hover:text-purple-300 uppercase tracking-tight leading-tight transition">PROFIL PENGEMBANG</div>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-purple-400/70 group-hover:text-purple-300 group-hover:translate-x-1 transition text-base shrink-0"></i>
+                    </button>
+
+                    <button onclick="openModal('modal-referensi')" class="bento-card-hover glass-panel rounded-3xl px-4 py-3 flex items-center justify-between text-left group border border-rose-400/45 bg-slate-900/75 backdrop-blur-md h-full">
+                        <div class="flex items-center gap-3.5 min-w-0">
+                            <div class="w-[56px] h-[56px] rounded-2xl bg-gradient-to-br from-rose-400/25 to-pink-600/20 border-2 border-rose-400/60 flex items-center justify-center text-rose-300 group-hover:scale-105 transition shrink-0 shadow-md">
+                                <i class="fa-solid fa-landmark text-2xl"></i>
+                            </div>
+                            <div class="text-[20px] font-black text-white group-hover:text-rose-300 uppercase tracking-tight leading-tight transition">REFERENSI</div>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-rose-400/70 group-hover:text-rose-300 group-hover:translate-x-1 transition text-base shrink-0"></i>
+                    </button>
+                </div>
+
+                <!-- BOTTOM ACTION BUTTON: KUIS TTS -->
+                <button id="btn-start-adventure" onclick="handleStartAdventureClick()" class="h-[74px] px-5 rounded-3xl bg-slate-900/85 hover:bg-slate-800 border border-amber-400/55 text-slate-100 font-black tracking-wide shadow-xl flex items-center justify-between transition transform active:scale-98 shrink-0 backdrop-blur-md">
+                    <div class="flex items-center gap-3.5">
+                        <div class="w-12 h-12 rounded-2xl bg-amber-400/15 border-2 border-amber-400/45 flex items-center justify-center shrink-0">
+                            <i id="icon-start-adventure" class="fa-solid fa-lock text-amber-400 text-2xl"></i>
+                        </div>
+                        <span id="label-start-adventure" class="text-[20px] font-black uppercase tracking-wide">MULAI KUIS TTS (TERKUNCI)</span>
+                    </div>
+                    <span class="px-3.5 py-1 rounded-xl bg-slate-950/90 border border-amber-400/40 text-xs font-extrabold text-amber-300 shrink-0">5 Level • 30 Soal</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="relative z-10 pt-3 flex items-center justify-center">
+            <p class="px-4 py-1 rounded-full bg-slate-950/70 border border-slate-700/70 text-[12.5px] font-semibold text-slate-200 tracking-wide text-center backdrop-blur-sm">
+                Pelajari 10 Bagian Materi • Kerjakan Aktivitas Interaktif • Selesaikan Kuis TTS 5 Level • Raih Sertifikat Ketuntasan
+            </p>
+        </div>
+    </main>
+
+    <!-- GAME KUIS TTS 5 LEVEL SCREEN -->
+    <section id="game-screen-container" class="hidden absolute inset-0 pt-14 px-5 pb-3.5 z-10 overflow-hidden flex flex-col justify-between">
+        <div class="w-full h-full grid grid-cols-12 gap-4 pt-2 items-stretch overflow-hidden">
+            <div class="col-span-7 glass-panel rounded-3xl p-4 flex flex-col justify-between items-center overflow-hidden shadow-2xl border-2 border-amber-400/35">
+                <div class="w-full flex items-center justify-between gap-2 pb-2 border-b border-slate-800 shrink-0">
+                    <div class="flex items-center gap-2.5 min-w-0">
+                        <span id="tts-level-badge-pill" class="px-3 py-1 rounded-xl bg-amber-400 text-slate-950 font-black text-xs uppercase shrink-0">LEVEL 1</span>
+                        <div id="tts-level-title" class="text-sm font-black text-white uppercase tracking-wide truncate">Dasar Kesadaran Hukum (5 Soal)</div>
+                    </div>
+                    <div class="flex items-center gap-1.5 shrink-0">
+                        <button onclick="useTTSHint()" class="px-3 py-1.5 rounded-xl bg-amber-500/20 hover:bg-amber-500/35 border border-amber-400/60 text-amber-300 font-extrabold text-xs flex items-center gap-1.5 transition" title="Bantuan 1 Huruf">
+                            <i class="fa-solid fa-lightbulb"></i> <span>Bantuan</span>
+                        </button>
+                        <button onclick="checkCurrentTTSWord()" class="px-3.5 py-1.5 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-black text-xs flex items-center gap-1.5 transition shadow">
+                            <i class="fa-solid fa-check"></i> <span>Periksa Kata</span>
+                        </button>
+                        <button onclick="checkEntireTTSLevel()" class="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-emerald-400 to-teal-500 hover:from-emerald-300 hover:to-teal-400 text-slate-950 font-black text-xs flex items-center gap-1.5 transition shadow">
+                            <i class="fa-solid fa-check-double"></i> <span>Periksa Level</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="w-full px-3.5 py-2 my-1.5 rounded-xl bg-slate-950/90 border border-sky-400/40 flex items-center justify-between gap-3 shrink-0">
+                    <div class="flex items-center gap-2 min-w-0">
+                        <span id="tts-active-dir-badge" class="px-2.5 py-0.5 rounded-lg bg-sky-500/25 border border-sky-400/50 text-sky-300 font-black text-[12px] uppercase shrink-0">MENDATAR</span>
+                        <div id="tts-active-clue-banner" class="text-[15px] font-bold text-slate-100 truncate">Klik salah satu kotak pada papan TTS untuk mulai menjawab!</div>
+                    </div>
+                    <span id="tts-active-len-badge" class="px-2.5 py-0.5 rounded-lg bg-amber-500/20 text-amber-300 font-extrabold text-xs shrink-0">5 Huruf</span>
+                </div>
+
+                <div class="flex-1 w-full flex items-center justify-center overflow-hidden bg-slate-950/75 rounded-2xl border border-slate-800/90 p-2.5 shadow-inner">
+                    <div id="tts-grid-board" class="grid gap-[4px] items-center justify-center"></div>
+                </div>
+
+                <div id="tts-virtual-keyboard" class="w-full pt-2 mt-1.5 border-t border-slate-800/90 flex flex-col gap-1 shrink-0 select-none"></div>
+            </div>
+
+            <div class="col-span-5 glass-panel rounded-3xl p-4 flex flex-col justify-between gap-3 overflow-hidden shadow-2xl border-2 border-amber-400/35">
+                <div class="grid grid-rows-2 gap-3 flex-1 min-h-0 overflow-hidden">
+                    <div class="bg-slate-950/85 border border-sky-400/35 rounded-2xl p-3.5 flex flex-col overflow-hidden">
+                        <div class="text-sm font-black text-sky-300 uppercase tracking-wider pb-2 border-b border-slate-800 flex items-center justify-between shrink-0">
+                            <span class="flex items-center gap-2"><i class="fa-solid fa-arrows-left-right"></i> Pertanyaan Mendatar</span>
+                            <span id="tts-across-count" class="text-xs px-2 py-0.5 rounded-md bg-sky-500/20 text-sky-300 font-extrabold"></span>
+                        </div>
+                        <div id="tts-clues-across" class="overflow-y-auto custom-scroll flex-1 space-y-2 pt-2 pr-1"></div>
+                    </div>
+
+                    <div class="bg-slate-950/85 border border-amber-400/35 rounded-2xl p-3.5 flex flex-col overflow-hidden">
+                        <div class="text-sm font-black text-amber-300 uppercase tracking-wider pb-2 border-b border-slate-800 flex items-center justify-between shrink-0">
+                            <span class="flex items-center gap-2"><i class="fa-solid fa-arrows-up-down"></i> Pertanyaan Menurun</span>
+                            <span id="tts-down-count" class="text-xs px-2 py-0.5 rounded-md bg-amber-500/20 text-amber-300 font-extrabold"></span>
+                        </div>
+                        <div id="tts-clues-down" class="overflow-y-auto custom-scroll flex-1 space-y-2 pt-2 pr-1"></div>
+                    </div>
+                </div>
+
+                <div id="tts-explanation-panel" class="p-3.5 rounded-2xl bg-slate-900/95 border border-emerald-400/45 shrink-0">
+                    <div class="text-xs font-extrabold text-emerald-300 uppercase flex items-center gap-1.5">
+                        <i class="fa-solid fa-circle-info"></i> Status &amp; Pembahasan Jawaban:
+                    </div>
+                    <p id="tts-explanation-text" class="text-[15px] text-slate-100 mt-1 leading-relaxed">
+                        Isi kotak huruf secara bebas, lalu klik tombol <strong>"Periksa Kata"</strong> atau <strong>"Periksa Level"</strong> untuk melihat koreksi benar/salah beserta pembahasannya.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODAL: PETUNJUK MPI -->
+    <div id="modal-petunjuk" class="hidden absolute inset-0 z-50 bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-5 pt-14">
+        <div class="glass-panel w-[92%] h-[84%] rounded-3xl flex flex-col overflow-hidden shadow-2xl">
+            <div class="px-5 py-3.5 bg-slate-900/90 border-b border-sky-400/30 flex items-center justify-between shrink-0">
+                <h3 class="text-xl font-extrabold text-sky-300 flex items-center gap-2.5">
+                    <i class="fa-solid fa-compass"></i> Petunjuk Penggunaan Media Pembelajaran Interaktif
+                </h3>
+                <button onclick="closeModal('modal-petunjuk')" class="w-9 h-9 rounded-xl bg-slate-800 hover:bg-rose-600 text-white flex items-center justify-center transition">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="p-6 overflow-y-auto custom-scroll flex-1 grid grid-cols-2 gap-4 text-slate-200">
+                <div class="bg-slate-900/80 border border-sky-400/30 rounded-2xl p-5 space-y-3">
+                    <div class="font-extrabold text-amber-300 text-base flex items-center gap-2">
+                        <i class="fa-solid fa-list-check"></i> 1. Alur Belajar &amp; Eksplorasi Materi
+                    </div>
+                    <div class="item-justify">
+                        <span class="item-marker text-amber-400">1.</span>
+                        <div class="item-body">Buka menu <strong>MATERI PEMBELAJARAN</strong> dan pelajari secara berurutan mulai dari <strong>Bagian 1 hingga Bagian 10</strong>.</div>
+                    </div>
+                    <div class="item-justify">
+                        <span class="item-marker text-amber-400">2.</span>
+                        <div class="item-body">Kerjakan aktivitas interaktif di dalam materi dan unduh hasil kerjamu dalam format gambar <strong>.JPG</strong>.</div>
+                    </div>
+                </div>
+                <div class="bg-slate-900/80 border border-emerald-400/30 rounded-2xl p-5 space-y-3">
+                    <div class="font-extrabold text-emerald-300 text-base flex items-center gap-2">
+                        <i class="fa-solid fa-puzzle-piece"></i> 2. Aturan Game Kuis TTS 5 Level
+                    </div>
+                    <div class="item-justify">
+                        <span class="item-marker-dot text-emerald-400">•</span>
+                        <div class="item-body">TTS terdiri atas <strong>5 Level Bertahap</strong> (Total 30 Soal) sesuai tujuan pembelajaran Bab 2.</div>
+                    </div>
+                    <div class="item-justify">
+                        <span class="item-marker-dot text-emerald-400">•</span>
+                        <div class="item-body">Jawaban kunci disembunyikan sebelum diperiksa. Setelah menekan tombol periksa, koreksi benar/salah akan muncul beserta pembahasannya.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: CP & TP -->
+    <div id="modal-cptp" class="hidden absolute inset-0 z-50 bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-5 pt-14">
+        <div class="glass-panel w-[92%] h-[84%] rounded-3xl flex flex-col overflow-hidden shadow-2xl">
+            <div class="px-5 py-3.5 bg-slate-900/90 border-b border-emerald-400/30 flex items-center justify-between shrink-0">
+                <h3 class="text-xl font-extrabold text-emerald-300 flex items-center gap-2.5">
+                    <i class="fa-solid fa-bullseye"></i> Capaian Pembelajaran (CP) &amp; Tujuan Pembelajaran (TP)
+                </h3>
+                <button onclick="closeModal('modal-cptp')" class="w-9 h-9 rounded-xl bg-slate-800 hover:bg-rose-600 text-white flex items-center justify-center transition">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="p-6 overflow-y-auto custom-scroll flex-1 grid grid-cols-2 gap-4 text-slate-200">
+                <div class="bg-slate-900/80 border border-amber-400/35 rounded-2xl p-5 space-y-3">
+                    <span class="px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 font-extrabold text-xs uppercase">Elemen UUD NRI Tahun 1945 • Kelas X</span>
+                    <h4 class="font-extrabold text-white text-lg">Capaian Pembelajaran (CP)</h4>
+                    <p class="para-justify text-slate-200">
+                        Peserta didik mampu menerapkan perilaku taat hukum berdasarkan peraturan yang berlaku di masyarakat serta menganalisis tata urutan peraturan perundang-undangan di Indonesia dalam rangka membangun budaya taat hukum berdasarkan nilai-nilai Pancasila dan UUD NRI Tahun 1945.
+                    </p>
+                </div>
+                <div class="bg-slate-900/80 border border-emerald-400/35 rounded-2xl p-5 space-y-3">
+                    <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 font-extrabold text-xs uppercase">Tujuan Pembelajaran (TP)</span>
+                    <p class="text-slate-300 text-sm font-semibold">Setelah mempelajari materi dan aktivitas pembelajaran, kalian diharapkan mampu:</p>
+                    <div class="space-y-2.5">
+                        <div class="item-justify">
+                            <span class="item-marker text-emerald-400">1.</span>
+                            <div class="item-body">menunjukkan perilaku taat hukum berdasarkan peraturan yang berlaku di masyarakat;</div>
+                        </div>
+                        <div class="item-justify">
+                            <span class="item-marker text-emerald-400">2.</span>
+                            <div class="item-body">menganalisis contoh-contoh perilaku yang menunjukkan taat hukum dan melanggar hukum dalam kehidupan di masyarakat;</div>
+                        </div>
+                        <div class="item-justify">
+                            <span class="item-marker text-emerald-400">3.</span>
+                            <div class="item-body">menganalisis dampak kasus pelanggaran hak dan pengingkaran kewajiban yang bertentangan dengan Undang-Undang Dasar Negara Republik Indonesia Tahun 1945.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: MATERI PEMBELAJARAN -->
+    <div id="modal-materi" class="hidden absolute inset-0 z-50 bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-5 pt-14">
+        <div class="glass-panel w-[95%] h-[88%] rounded-3xl flex flex-col overflow-hidden shadow-2xl">
+            <div class="px-6 py-3 bg-slate-900/95 border-b border-amber-400/30 flex items-center justify-between shrink-0">
+                <div class="flex items-center gap-3 min-w-0">
+                    <span id="materi-slide-badge" class="px-3.5 py-1 rounded-xl bg-amber-400 text-slate-950 font-black text-sm shrink-0">Bagian 1 / 10</span>
+                    <h3 id="materi-slide-title" class="text-xl font-extrabold text-white truncate">Judul Bagian Materi</h3>
+                </div>
+                <button onclick="closeModal('modal-materi')" class="w-9 h-9 rounded-xl bg-slate-800 hover:bg-rose-600 text-white flex items-center justify-center transition shrink-0">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div id="materi-slide-body" class="p-6 overflow-y-auto custom-scroll flex-1 flex flex-col gap-4 text-slate-100"></div>
+            <div class="px-6 py-3 bg-slate-900/95 border-t border-slate-800 flex items-center justify-between shrink-0">
+                <button id="btn-materi-prev" onclick="changeMateriSlide(-1)" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-sm flex items-center gap-2 transition">
+                    <i class="fa-solid fa-arrow-left"></i> Sebelumnya
+                </button>
+                <div id="materi-dots" class="flex items-center gap-1.5"></div>
+                <button id="btn-materi-next" onclick="changeMateriSlide(1)" class="px-5 py-2 rounded-xl bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-300 hover:to-orange-400 text-slate-950 font-extrabold text-sm flex items-center gap-2 transition shadow-lg">
+                    <span>Selanjutnya</span> <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: PROFIL PENGEMBANG -->
+    <div id="modal-profil" class="hidden absolute inset-0 z-50 bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-5 pt-14">
+        <div class="glass-panel w-[92%] h-[84%] rounded-3xl flex flex-col overflow-hidden shadow-2xl">
+            <div class="px-5 py-3.5 bg-slate-900/90 border-b border-purple-400/30 flex items-center justify-between shrink-0">
+                <h3 class="text-xl font-extrabold text-purple-300 flex items-center gap-2.5">
+                    <i class="fa-solid fa-user-tie"></i> Profil Pengembang
+                </h3>
+                <button onclick="closeModal('modal-profil')" class="w-9 h-9 rounded-xl bg-slate-800 hover:bg-rose-600 text-white flex items-center justify-center transition">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="p-8 overflow-y-auto custom-scroll flex-1 flex items-center justify-center text-slate-200">
+                <div class="w-full max-w-4xl grid grid-cols-12 gap-7 items-stretch">
+                    <!-- Kolom Foto Profil (Tinggi Seimbang dengan Tumpukan 4 Kotak Informasi) -->
+                    <div class="col-span-4 flex flex-col">
+                        <div class="w-full h-full min-h-[340px] rounded-2xl bg-gradient-to-b from-slate-800 to-slate-950 border-2 border-amber-400/60 shadow-2xl overflow-hidden flex items-center justify-center relative">
+                            <img id="dev-profile-img" src="assets/images/profil.jpg" alt="Foto Pengembang" class="w-full h-full object-cover object-top" onload="this.classList.remove('hidden');" onerror="window.handleProfileImgFallback(this)">
+                            <div id="dev-profile-fallback" class="hidden flex-col items-center justify-center text-center p-5">
+                                <i class="fa-solid fa-user-tie text-6xl text-amber-400 mb-3"></i>
+                                <span class="text-xs font-bold text-slate-400">assets/images/profil.jpg</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kolom Tumpukan Informasi (4 Kotak Sama Tinggi Total dengan Foto) -->
+                    <div class="col-span-8 flex flex-col justify-between gap-3.5 text-base">
+                        <div class="bg-slate-900/85 border border-amber-400/45 px-5 py-4 rounded-2xl flex flex-col justify-center shadow-md">
+                            <div class="text-xs text-amber-300 font-extrabold uppercase tracking-wider mb-0.5">Nama</div>
+                            <div class="font-black text-white text-xl">Anggi Perdana, S.Pd., Gr.</div>
+                        </div>
+                        <div class="bg-slate-900/85 border border-slate-700 px-5 py-4 rounded-2xl flex flex-col justify-center shadow-md">
+                            <div class="text-xs text-purple-300 font-extrabold uppercase tracking-wider mb-0.5">Guru Mapel</div>
+                            <div class="font-bold text-white text-lg">Pendidikan Pancasila</div>
+                        </div>
+                        <div class="bg-slate-900/85 border border-slate-700 px-5 py-4 rounded-2xl flex flex-col justify-center shadow-md">
+                            <div class="text-xs text-purple-300 font-extrabold uppercase tracking-wider mb-0.5">Instansi</div>
+                            <div class="font-bold text-white text-lg">SMAN 1 Bintan Pesisir</div>
+                        </div>
+                        <div class="bg-slate-900/85 border border-slate-700 px-5 py-4 rounded-2xl flex flex-col justify-center shadow-md">
+                            <div class="text-xs text-purple-300 font-extrabold uppercase tracking-wider mb-0.5">Alamat</div>
+                            <div class="font-bold text-white text-lg">Kabupaten Bintan, Provinsi Kepulauan Riau</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: REFERENSI -->
+    <div id="modal-referensi" class="hidden absolute inset-0 z-50 bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-5 pt-14">
+        <div class="glass-panel w-[92%] h-[84%] rounded-3xl flex flex-col overflow-hidden shadow-2xl">
+            <div class="px-5 py-3.5 bg-slate-900/90 border-b border-rose-400/30 flex items-center justify-between shrink-0">
+                <h3 class="text-xl font-extrabold text-rose-300 flex items-center gap-2.5">
+                    <i class="fa-solid fa-landmark"></i> Daftar Pustaka &amp; Referensi Materi
+                </h3>
+                <button onclick="closeModal('modal-referensi')" class="w-9 h-9 rounded-xl bg-slate-800 hover:bg-rose-600 text-white flex items-center justify-center transition">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="p-6 overflow-y-auto custom-scroll flex-1 space-y-3.5 text-slate-200">
+                <div class="bg-slate-900/80 border border-slate-700 p-4 rounded-2xl">
+                    <div class="font-extrabold text-amber-300 mb-1">1. Buku Teks Utama Pendidikan Pancasila Kelas X (Edisi Revisi)</div>
+                    <p class="para-justify">Rochimudin, Muhamad Hari Purnomo Hadi, &amp; Ahmad Asroni. (2023). <em>Pendidikan Pancasila untuk SMA/SMK/MA/MAK Kelas X</em>. Jakarta: Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi Republik Indonesia.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: CERTIFICATE OF COMPLETION (APPRECIATION) -->
+    <div id="modal-appreciation" class="hidden absolute inset-0 z-50 bg-slate-950/92 backdrop-blur-md flex items-center justify-center p-4 pt-10">
+        <div class="w-[94%] max-w-4xl h-[90%] rounded-3xl p-6 flex flex-col justify-between relative overflow-hidden shadow-2xl bg-gradient-to-b from-[#111827] via-[#0b0f19] to-[#020617] border-4 border-[#fbbf24]">
+            <div class="absolute top-3 left-3 w-10 h-10 border-t-2 border-l-2 border-amber-400 pointer-events-none"></div>
+            <div class="absolute top-3 right-3 w-10 h-10 border-t-2 border-r-2 border-amber-400 pointer-events-none"></div>
+            <div class="absolute bottom-3 left-3 w-10 h-10 border-b-2 border-l-2 border-amber-400 pointer-events-none"></div>
+            <div class="absolute bottom-3 right-3 w-10 h-10 border-b-2 border-r-2 border-amber-400 pointer-events-none"></div>
+
+            <div class="text-center space-y-1 shrink-0 pt-1">
+                <div class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-amber-500/20 border border-amber-400/50 text-amber-300 text-xs font-extrabold uppercase tracking-widest shadow">
+                    <i class="fa-solid fa-award"></i> Piagam Penghargaan Resmi • Kurikulum Merdeka
+                </div>
+                <h2 class="text-3xl font-black gold-gradient-text uppercase tracking-wider pt-1">Sertifikat Ketuntasan Belajar</h2>
+                <p class="text-xs font-semibold text-slate-300">Diberikan sebagai pengakuan atas keberhasilan menyelesaikan seluruh modul pembelajaran</p>
+            </div>
+
+            <div class="text-center space-y-3 px-8 my-auto">
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Sertifikat ini dengan bangga dianugerahkan kepada:</p>
+                <div class="py-2.5 px-6 rounded-2xl bg-slate-900/90 border-2 border-amber-400/60 inline-block shadow-inner min-w-[360px]">
+                    <span id="cert-participant-name" class="text-2xl font-black text-amber-300 uppercase tracking-wide">Peserta Didik Berprestasi</span>
+                </div>
+                <p id="appreciation-summary" class="text-[15px] text-slate-200 leading-relaxed max-w-2xl mx-auto"></p>
+            </div>
+
+            <div class="flex items-center justify-between px-6 pt-3 border-t border-slate-800/90 shrink-0">
+                <div class="flex items-center gap-4">
+                    <div class="w-16 h-16 rounded-full bg-gradient-to-tr from-amber-500 via-yellow-300 to-amber-600 p-0.5 shadow-xl flex items-center justify-center animate-pulse shrink-0">
+                        <div class="w-full h-full rounded-full bg-slate-950 flex flex-col items-center justify-center text-center p-1 border border-amber-400">
+                            <i class="fa-solid fa-shield-halved text-amber-400 text-base"></i>
+                            <span class="text-[8px] font-black text-amber-300 uppercase leading-none mt-0.5">RESMI</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button onclick="downloadTTSCertificateJPG()" class="px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-400 to-teal-500 hover:from-emerald-300 hover:to-teal-400 text-slate-950 font-black text-xs flex items-center gap-1.5 shadow-lg transition">
+                            <i class="fa-solid fa-file-image"></i> Unduh (.JPG)
+                        </button>
+                        <button onclick="closeModal('modal-appreciation')" class="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs transition">
+                            Tutup
+                        </button>
+                        <button onclick="closeModal('modal-appreciation'); exitGameToCover();" class="px-3.5 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs transition">
+                            Menu Utama
+                        </button>
+                    </div>
+                </div>
+
+                <div class="text-right space-y-0.5">
+                    <div id="cert-date-str" class="text-[11px] text-amber-400 font-semibold pb-1"></div>
+                    <div class="text-[11px] text-slate-400 font-medium">Guru Mata Pelajaran,</div>
+                    <div class="font-black text-amber-300 text-sm tracking-wide pt-2">Anggi Perdana, S.Pd., Gr.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+
+<script>
+    // =========================================================================
+    // 0. STAGE AUTO-SCALE ENGINE (STRICT 16:9 1280x720 UNIFORM SCALING - NO STRETCHING)
+    // =========================================================================
+    function updateStageScale() {
+        const stage = document.getElementById('app-stage-16x9');
+        const wrapper = document.getElementById('stage-scale-wrapper');
+        if (!stage || !wrapper) return;
+
+        const vw = (window.visualViewport ? window.visualViewport.width : window.innerWidth) || document.documentElement.clientWidth || 1280;
+        const vh = (window.visualViewport ? window.visualViewport.height : window.innerHeight) || document.documentElement.clientHeight || 720;
+
+        wrapper.style.width = `${vw}px`;
+        wrapper.style.height = `${vh}px`;
+
+        const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || (Math.min(vw, vh) <= 920);
+        const isPortrait = vh > vw;
+
+        // Selalu gunakan uniform scale (Math.min) agar teks, tombol, dan gambar 100% proporsional (tidak pernah tertarik/gepeng)
+        if (isMobileDevice && isPortrait) {
+            const scale = Math.min(vh / 1280, vw / 720);
+            stage.style.transform = `rotate(90deg) scale(${scale})`;
+            stage.style.border = '1px solid rgba(251, 191, 36, 0.22)';
+        } else {
+            const scale = Math.min(vw / 1280, vh / 720);
+            stage.style.transform = `scale(${scale})`;
+            stage.style.border = '1px solid rgba(251, 191, 36, 0.22)';
+        }
+    }
+    window.addEventListener('resize', updateStageScale);
+    window.addEventListener('orientationchange', () => setTimeout(updateStageScale, 120));
+    if (window.visualViewport) {
+        window.visualViewport.addEventListener('resize', updateStageScale);
+        window.visualViewport.addEventListener('scroll', updateStageScale);
+    }
+    window.addEventListener('DOMContentLoaded', () => {
+        updateStageScale();
+        if (typeof ResizeObserver !== 'undefined') {
+            const ro = new ResizeObserver(updateStageScale);
+            ro.observe(document.documentElement);
+        }
+    });
+    updateStageScale();
+
+    // =========================================================================
+    // 1. DATA 10 BAGIAN MATERI PEMBELAJARAN (SESUAI BUKU TEKS BAB 2 SUB A)
+    // =========================================================================
+    let currentMateriIndex = 0;
+    let isMateriCompleted = false;
+    let globalStudentName = '';
+    let globalStudentClass = '';
+
+    let draftBagian2 = { studentName: '', studentClass: '', col1: ['', '', '', '', '', ''], col2: ['', '', '', '', '', ''], isSubmitted: false };
+    let draftBerlatihJujur = { q1: '', q2: '', q3: '', isSubmitted: false };
+    let draftAktivitas21 = { studentName: '', studentClass: '', studentAns: '', isSubmitted: false };
+    let draftAktivitas22 = { studentName: '', studentClass: '', tahu: '', ingintahu: '', tahubaru: '', isSubmitted: false };
+    let draftTabel22 = {
+        studentName: '',
+        studentClass: '',
+        rows: [
+            { perilaku: '', manfaat: '' },
+            { perilaku: '', manfaat: '' },
+            { perilaku: '', manfaat: '' },
+            { perilaku: '', manfaat: '' },
+            { perilaku: '', manfaat: '' }
+        ],
+        isSubmitted: false
+    };
+
+    const materiSections = [
+        {
+            title: "Peta Konsep & Pengantar: Membangun Kesadaran Hukum",
+            badge: "Bagian 1 / 10",
+            html: `
+                <div class="space-y-4">
+                    <div class="p-5 rounded-2xl bg-slate-900/90 border border-amber-400/40 space-y-3">
+                        <div class="text-sm font-black text-amber-300 uppercase tracking-wider flex items-center gap-2">
+                            <i class="fa-solid fa-sitemap"></i> A. Membangun Kesadaran Hukum
+                        </div>
+                        <p class="para-justify text-slate-100">
+                            Kehidupan bermasyarakat, berbangsa, dan bernegara tidak pernah lepas dari aturan atau hukum. Sebagaimana adagium hukum terkenal yang dikemukakan oleh filsuf Romawi, <strong>Marcus Tullius Cicero</strong>: <em>"Ubi societas ibi ius"</em> yang artinya <strong>di mana ada masyarakat, di sana ada hukum</strong>. Hukum hadir untuk mengatur hubungan antarmanusia agar tercipta ketertiban, kedamaian, dan keadilan sosial.
+                        </p>
+                        <p class="para-justify text-slate-100">
+                            Kesadaran hukum tidak tumbuh secara instan, melainkan dibangun melalui pembiasaan sejak dini, mulai dari lingkungan <strong>keluarga, sekolah, masyarakat, hingga negara</strong>. Seseorang yang memiliki kesadaran hukum yang tinggi akan mematuhi aturan bukan karena takut terhadap sanksi atau diawasi petugas, melainkan karena kesadaran dari dalam hati nuraninya bahwa aturan tersebut dibuat demi kebaikan bersama.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="p-4 rounded-2xl bg-slate-900/80 border border-sky-400/35 space-y-2">
+                            <div class="text-sky-300 font-extrabold text-base flex items-center gap-2"><i class="fa-solid fa-heart-pulse"></i> 1. Kesadaran Hukum</div>
+                            <p class="text-[17px] text-slate-100 leading-relaxed">Memahami pentingnya norma dan aturan serta menumbuhkan budaya patuh dari kesadaran diri sendiri.</p>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-slate-900/80 border border-emerald-400/35 space-y-2">
+                            <div class="text-emerald-300 font-extrabold text-base flex items-center gap-2"><i class="fa-solid fa-user-check"></i> 2. Perilaku Taat Hukum</div>
+                            <p class="text-[17px] text-slate-100 leading-relaxed">Menerapkan kepatuhan hukum dalam bidang pendidikan, kesehatan, kebebasan beragama, lalu lintas, dan sosial.</p>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-slate-900/80 border border-rose-400/35 space-y-2">
+                            <div class="text-rose-300 font-extrabold text-base flex items-center gap-2"><i class="fa-solid fa-scale-unbalanced"></i> 3. Hak &amp; Kewajiban</div>
+                            <p class="text-[17px] text-slate-100 leading-relaxed">Menganalisis kasus pelanggaran hak dan pengingkaran kewajiban warga negara yang bertentangan dengan UUD NRI Tahun 1945.</p>
+                        </div>
+                    </div>
+                </div>
+            `
+        },
+        {
+            title: "Mari Berpikir Kritis (Gambar 1.2) & Berlatih Jujur",
+            badge: "Bagian 2 / 10",
+            html: `
+                <div class="space-y-5">
+                    <div class="p-5 rounded-2xl bg-slate-900/90 border border-amber-400/40 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <h4 class="text-base font-black text-amber-300 uppercase flex items-center gap-2">
+                                <i class="fa-solid fa-images"></i> Amati Gambar 1.2 Contoh Perilaku
+                            </h4>
+                        </div>
+
+                        <div class="grid grid-cols-12 gap-5 items-stretch">
+                            <!-- Left Column: 7:10 Vertical Ratio Image Frame (Placed Side-by-Side) -->
+                            <div class="col-span-4 flex items-center justify-center">
+                                <div class="w-full max-w-[270px] aspect-[7/10] rounded-2xl bg-slate-950 border-2 border-amber-400/40 overflow-hidden flex items-center justify-center p-2 shadow-inner">
+                                    <img id="materi-gambar12-img" src="assets/images/gambar1_2.png" alt="Gambar 1.2 Contoh Perilaku" class="w-full h-full object-contain rounded-xl hidden" onload="window.handleGambar12Load(this)" onerror="window.handleGambar12Fallback(this)">
+                                    <div id="gambar12-fallback" class="flex flex-col items-center justify-center text-center p-4 space-y-2 text-slate-300">
+                                        <i class="fa-solid fa-image text-4xl text-amber-400"></i>
+                                        <div class="font-extrabold text-white text-sm">Gambar 1.2 Contoh Perilaku (Rasio 7:10)</div>
+                                        <p class="text-xs text-slate-400 leading-relaxed">
+                                            (1) Membuang sampah pada tempatnya, (2) Menyontek saat ujian, (3) Menyeberang di zebra cross, (4) Berkendara tanpa helm, (5) Upacara dengan tertib, (6) Perundungan teman, (7) Mengantre tertib, (8) Vandalisme.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Right Column: Identity & 2 Classification Lists -->
+                            <div class="col-span-8 flex flex-col justify-between space-y-3">
+                                <div class="grid grid-cols-2 gap-3">
+                                    <div>
+                                        <label class="text-xs font-bold text-amber-300 uppercase">Nama Peserta Didik</label>
+                                        <input id="b2-student-name" type="text" placeholder="Ketik nama lengkap..." oninput="saveBagian2Draft()" class="w-full mt-1 px-3.5 py-2 rounded-xl bg-slate-950 border border-slate-700 text-white text-sm font-semibold focus:border-amber-400 outline-none">
+                                    </div>
+                                    <div>
+                                        <label class="text-xs font-bold text-amber-300 uppercase">Kelas</label>
+                                        <input id="b2-student-class" type="text" placeholder="Contoh: X.1 / X Merdeka" oninput="saveBagian2Draft()" class="w-full mt-1 px-3.5 py-2 rounded-xl bg-slate-950 border border-slate-700 text-white text-sm font-semibold focus:border-amber-400 outline-none">
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-2 gap-3">
+                                    <div class="p-3.5 rounded-2xl bg-slate-950/90 border border-emerald-400/40 space-y-1.5">
+                                        <div class="text-xs font-black text-emerald-300 uppercase">Perilaku yang Harus Dikembangkan</div>
+                                        ${[0,1,2,3,4,5].map(i => `
+                                            <div class="flex items-center gap-1.5">
+                                                <span class="text-xs font-extrabold text-emerald-400 w-4">${i+1}.</span>
+                                                <input id="b2-col1-${i}" type="text" placeholder="Perilaku positif..." oninput="saveBagian2Draft()" class="flex-1 px-2.5 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-white text-xs outline-none focus:border-emerald-400">
+                                            </div>
+                                        `).join('')}
+                                    </div>
+                                    <div class="p-3.5 rounded-2xl bg-slate-950/90 border border-rose-400/40 space-y-1.5">
+                                        <div class="text-xs font-black text-rose-300 uppercase">Perilaku yang Harus Dihindari</div>
+                                        ${[0,1,2,3,4,5].map(i => `
+                                            <div class="flex items-center gap-1.5">
+                                                <span class="text-xs font-extrabold text-rose-400 w-4">${i+1}.</span>
+                                                <input id="b2-col2-${i}" type="text" placeholder="Perilaku negatif..." oninput="saveBagian2Draft()" class="flex-1 px-2.5 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-white text-xs outline-none focus:border-rose-400">
+                                            </div>
+                                        `).join('')}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-slate-900/90 border border-sky-400/40 space-y-3.5">
+                        <h4 class="text-base font-black text-sky-300 uppercase flex items-center gap-2">
+                            <i class="fa-solid fa-hand-holding-heart"></i> Berlatih Jujur Terhadap Diri Sendiri
+                        </h4>
+                        <div class="space-y-3">
+                            <div>
+                                <div class="item-justify font-semibold text-slate-100 mb-1">
+                                    <span class="item-marker text-sky-400">1.</span>
+                                    <div class="item-body">Peraturan apa saja yang pernah kalian langgar, baik di rumah, di sekolah, maupun di masyarakat?</div>
+                                </div>
+                                <textarea id="bj-q1" rows="2" oninput="saveBagian2Draft()" placeholder="Tuliskan jawaban jujurmu..." class="w-full px-3.5 py-2 rounded-xl bg-slate-950 border border-slate-700 text-white text-sm outline-none focus:border-sky-400"></textarea>
+                            </div>
+                            <div>
+                                <div class="item-justify font-semibold text-slate-100 mb-1">
+                                    <span class="item-marker text-sky-400">2.</span>
+                                    <div class="item-body">Mengapa kalian melanggar peraturan tersebut?</div>
+                                </div>
+                                <textarea id="bj-q2" rows="2" oninput="saveBagian2Draft()" placeholder="Tuliskan alasanmu..." class="w-full px-3.5 py-2 rounded-xl bg-slate-950 border border-slate-700 text-white text-sm outline-none focus:border-sky-400"></textarea>
+                            </div>
+                            <div>
+                                <div class="item-justify font-semibold text-slate-100 mb-1">
+                                    <span class="item-marker text-sky-400">3.</span>
+                                    <div class="item-body">Apa komitmen kalian ke depan agar tidak mengulangi pelanggaran tersebut?</div>
+                                </div>
+                                <textarea id="bj-q3" rows="2" oninput="saveBagian2Draft()" placeholder="Tuliskan komitmen perbaikan dirimu..." class="w-full px-3.5 py-2 rounded-xl bg-slate-950 border border-slate-700 text-white text-sm outline-none focus:border-sky-400"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between pt-2">
+                            <span id="b2-feedback-msg" class="text-xs font-bold text-amber-300"></span>
+                            <div class="flex items-center gap-2">
+                                <button onclick="submitBagian2Activity()" class="px-4 py-2 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs flex items-center gap-1.5 transition shadow">
+                                    <i class="fa-solid fa-floppy-disk"></i> Simpan Jawaban
+                                </button>
+                                <button onclick="downloadBagian2JPG()" class="px-4 py-2 rounded-xl bg-emerald-400 hover:bg-emerald-300 text-slate-950 font-black text-xs flex items-center gap-1.5 transition shadow">
+                                    <i class="fa-solid fa-download"></i> Unduh Lembar Kerja (.JPG)
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `
+        },
+        {
+            title: "Pentingnya Hukum & Tujuan Hukum dalam Masyarakat",
+            badge: "Bagian 3 / 10",
+            html: `
+                <div class="space-y-4">
+                    <div class="p-5 rounded-2xl bg-slate-900/90 border border-amber-400/40 space-y-3">
+                        <h4 class="text-base font-black text-amber-300 uppercase">Mengapa Masyarakat Membutuhkan Hukum?</h4>
+                        <p class="para-justify text-slate-100">
+                            Manusia merupakan makhluk individu sekaligus makhluk sosial (<em>zoon politicon</em>) yang senantiasa berinteraksi dengan sesamanya. Dalam interaksi tersebut, setiap orang memiliki kepentingan dan kebutuhan yang berbeda-beda. Apabila tidak ada kaidah atau aturan hukum yang mengikat, maka akan terjadi benturan kepentingan yang memicu kekacauan (<em>chaos</em>) di mana pihak yang kuat menindas pihak yang lemah (<em>homo homini lupus</em>).
+                        </p>
+                        <p class="para-justify text-slate-100">
+                            Negara Republik Indonesia secara tegas menyatakan diri sebagai negara hukum sebagaimana termaktub dalam <strong>Pasal 1 ayat (3) Undang-Undang Dasar Negara Republik Indonesia Tahun 1945</strong> yang berbunyi: <em>"Negara Indonesia adalah negara hukum."</em> Artinya, segala penyelenggaraan kehidupan berbangsa dan bernegara harus didasarkan pada hukum yang berlaku.
+                        </p>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-slate-900/90 border border-emerald-400/40 space-y-2.5">
+                        <h4 class="text-base font-black text-emerald-300 uppercase">Tujuan Ditetapkannya Hukum</h4>
+                        <div class="item-justify">
+                            <span class="item-marker text-emerald-400">1.</span>
+                            <div class="item-body">Mewujudkan <strong>keadilan sosial</strong> bagi seluruh warga masyarakat dengan memberikan hak yang sesuai dengan kewajibannya.</div>
+                        </div>
+                        <div class="item-justify">
+                            <span class="item-marker text-emerald-400">2.</span>
+                            <div class="item-body">Menciptakan <strong>ketertiban, keamanan, dan ketenteraman</strong> dalam pergaulan hidup sehari-hari di masyarakat.</div>
+                        </div>
+                        <div class="item-justify">
+                            <span class="item-marker text-emerald-400">3.</span>
+                            <div class="item-body">Memberikan <strong>kepastian hukum</strong> serta perlindungan terhadap hak asasi setiap warga negara dari tindakan sewenang-wenang.</div>
+                        </div>
+                        <div class="item-justify">
+                            <span class="item-marker text-emerald-400">4.</span>
+                            <div class="item-body">Mendatangkan <strong>kemanfaatan dan kebahagiaan</strong> sebesar-besarnya bagi masyarakat luas.</div>
+                        </div>
+                    </div>
+                </div>
+            `
+        },
+        {
+            title: "Ciri-Ciri Seseorang yang Memiliki Kesadaran Hukum",
+            badge: "Bagian 4 / 10",
+            html: `
+                <div class="space-y-4">
+                    <div class="p-5 rounded-2xl bg-slate-900/90 border border-sky-400/40 space-y-3">
+                        <h4 class="text-base font-black text-sky-300 uppercase">Indikator &amp; Tingkat Kesadaran Hukum</h4>
+                        <p class="para-justify text-slate-100">
+                            Menurut pakar sosiologi hukum <strong>Soerjono Soekanto</strong>, tingkat kesadaran hukum warga masyarakat dapat diukur melalui empat indikator utama yang saling berkaitan secara berjenjang:
+                        </p>
+                        <div class="space-y-2.5 pt-1">
+                            <div class="item-justify">
+                                <span class="item-marker text-amber-400">1.</span>
+                                <div class="item-body"><strong>Pengetahuan Hukum (<em>Law Awareness</em>):</strong> Seseorang mengetahui bahwa perilaku-perilaku tertentu telah diatur oleh hukum tertulis maupun tidak tertulis.</div>
+                            </div>
+                            <div class="item-justify">
+                                <span class="item-marker text-amber-400">2.</span>
+                                <div class="item-body"><strong>Pemahaman Hukum (<em>Law Acquaintance</em>):</strong> Seseorang memahami isi, tujuan, dan manfaat dari suatu peraturan hukum yang berlaku.</div>
+                            </div>
+                            <div class="item-justify">
+                                <span class="item-marker text-amber-400">3.</span>
+                                <div class="item-body"><strong>Sikap Hukum (<em>Legal Attitude</em>):</strong> Seseorang memiliki kecenderungan untuk menerima dan menghargai hukum karena dinilai adil serta bermanfaat.</div>
+                            </div>
+                            <div class="item-justify">
+                                <span class="item-marker text-amber-400">4.</span>
+                                <div class="item-body"><strong>Pola Perilaku Hukum (<em>Legal Behavior</em>):</strong> Tingkat tertinggi di mana seseorang secara nyata bertindak dan berperilaku sesuai dengan kaidah hukum yang berlaku.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-slate-900/90 border border-amber-400/40 space-y-2.5">
+                        <h4 class="text-base font-black text-amber-300 uppercase">Ciri-Ciri Perilaku Sadar Hukum</h4>
+                        <div class="item-justify">
+                            <span class="item-marker-dot text-amber-400">•</span>
+                            <div class="item-body">Kepatuhan dilaksanakan oleh seluruh kalangan masyarakat tanpa memandang status sosial.</div>
+                        </div>
+                        <div class="item-justify">
+                            <span class="item-marker-dot text-amber-400">•</span>
+                            <div class="item-body">Tidak menimbulkan kerugian baik bagi diri sendiri maupun orang lain.</div>
+                        </div>
+                        <div class="item-justify">
+                            <span class="item-marker-dot text-amber-400">•</span>
+                            <div class="item-body">Mematuhi aturan secara ikhlas meskipun tidak sedang diawasi oleh aparat penegak hukum.</div>
+                        </div>
+                    </div>
+                </div>
+            `
+        },
+        {
+            title: "Aktivitas Belajar 2.1: Pengamatan Perilaku Hukum",
+            badge: "Bagian 5 / 10",
+            html: `
+                <div class="space-y-4">
+                    <div class="p-5 rounded-2xl bg-slate-900/90 border border-amber-400/40 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <h4 class="text-base font-black text-amber-300 uppercase flex items-center gap-2">
+                                <i class="fa-solid fa-magnifying-glass-chart"></i> Aktivitas Belajar 2.1: Konteks Wilayah Pesisir &amp; Kepulauan
+                            </h4>
+                        </div>
+
+                        <div class="w-full max-w-2xl mx-auto aspect-video rounded-2xl bg-slate-950 border-2 border-slate-800 overflow-hidden flex items-center justify-center p-3 shadow-inner">
+                            <img id="materi-aktivitas21-img" src="assets/images/aktivitas2_1.jpg" alt="Ilustrasi Aktivitas 2.1" class="w-full h-full object-contain rounded-xl hidden" onload="window.handleAktivitas21Load(this)" onerror="window.handleAktivitas21Fallback(this)">
+                            <div id="aktivitas21-fallback" class="flex flex-col items-center justify-center text-center p-6 space-y-2 text-slate-300">
+                                <i class="fa-solid fa-anchor text-4xl text-amber-400"></i>
+                                <div class="font-extrabold text-white text-base">Studi Kasus Ketertiban Pelayaran Rakyat, Ekosistem Laut &amp; Lalu Lintas Pesisir (Rasio 16:9)</div>
+                                <p class="text-xs text-slate-400 max-w-xl">
+                                    Amati perilaku masyarakat atau pelajar di wilayah pesisir dan kepulauan: seperti penggunaan jaket pelampung (<em>life jacket</em>) saat naik <em>pompong/speedboat</em>, larangan membuang sampah plastik ke laut, pelestarian hutan bakau (<em>mangrove</em>) dan terumbu karang, hingga kepatuhan memakai helm di jalan raya desa/pulau!
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-slate-950/85 border border-sky-400/35 space-y-2">
+                            <div class="text-xs font-black text-sky-300 uppercase flex items-center gap-1.5">
+                                <i class="fa-solid fa-compass"></i> Instruksi Pengamatan Kontekstual Daerah Pesisir &amp; Kepulauan:
+                            </div>
+                            <p class="para-justify text-slate-100">
+                                Amati gambar di atas atau fenomena nyata di lingkungan tempat tinggal kalian sebagai masyarakat pesisir dan kepulauan! Pilihlah salah satu contoh kasus yang sering kalian jumpai, seperti: <strong>(1) keselamatan transportasi laut</strong> (enggan memakai <em>life jacket</em>/pelampung saat menyeberang antar-pulau dengan <em>pompong</em> atau <em>speedboat</em>), <strong>(2) kelestarian lingkungan pesisir</strong> (membuang sampah rumah tangga ke laut, merusak <em>mangrove</em>/terumbu karang, atau menangkap ikan dengan cara yang dilarang), maupun <strong>(3) ketertiban lalu lintas darat di wilayah pulau/pesisir</strong> (berkendara sepeda motor tanpa helm dan belum cukup umur karena merasa jalanan sepi).
+                            </p>
+                            <div class="space-y-1.5 pt-1 text-slate-200">
+                                <div class="item-justify">
+                                    <span class="item-marker text-amber-400">1.</span>
+                                    <div class="item-body">Bagaimanakah tanggapan kalian terhadap perilaku pelanggaran aturan di wilayah pesisir/kepulauan tersebut dan apa dampaknya bagi keselamatan maupun lingkungan laut kita?</div>
+                                </div>
+                                <div class="item-justify">
+                                    <span class="item-marker text-amber-400">2.</span>
+                                    <div class="item-body">Mengapa masih ada warga atau pelajar di daerah pesisir/kepulauan yang mengabaikan aturan tersebut?</div>
+                                </div>
+                                <div class="item-justify">
+                                    <span class="item-marker text-amber-400">3.</span>
+                                    <div class="item-body">Tuliskan solusi konkret yang dapat kalian lakukan sebagai pelajar untuk membangun budaya taat hukum di lingkungan pesisir dan kepulauan!</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3">
+                            <input id="a21-name" type="text" placeholder="Nama Lengkap..." oninput="saveAktivitas21Draft()" class="px-3.5 py-2 rounded-xl bg-slate-950 border border-slate-700 text-white text-sm font-semibold outline-none focus:border-amber-400">
+                            <input id="a21-class" type="text" placeholder="Kelas..." oninput="saveAktivitas21Draft()" class="px-3.5 py-2 rounded-xl bg-slate-950 border border-slate-700 text-white text-sm font-semibold outline-none focus:border-amber-400">
+                        </div>
+
+                        <textarea id="a21-ans" rows="4" oninput="saveAktivitas21Draft()" placeholder="Tuliskan hasil pengamatan, analisis dampak, alasan pelanggaran, dan solusi konkret kalian untuk wilayah pesisir/kepulauan di sini..." class="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white text-sm outline-none focus:border-amber-400"></textarea>
+
+                        <div class="flex items-center justify-between">
+                            <span id="a21-feedback" class="text-xs font-bold text-emerald-300"></span>
+                            <div class="flex items-center gap-2">
+                                <button onclick="submitAktivitas21()" class="px-4 py-2 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs flex items-center gap-1.5 transition">
+                                    <i class="fa-solid fa-floppy-disk"></i> Simpan Analisis
+                                </button>
+                                <button onclick="downloadAktivitas21JPG()" class="px-4 py-2 rounded-xl bg-emerald-400 hover:bg-emerald-300 text-slate-950 font-black text-xs flex items-center gap-1.5 transition">
+                                    <i class="fa-solid fa-download"></i> Unduh (.JPG)
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `
+        },
+        {
+            title: "Membangun Budaya Hukum & Anti-Perundungan (Bullying)",
+            badge: "Bagian 6 / 10",
+            html: `
+                <div class="space-y-4">
+                    <div class="p-5 rounded-2xl bg-slate-900/90 border border-amber-400/40 space-y-3">
+                        <h4 class="text-base font-black text-amber-300 uppercase">Lingkungan Pembentuk Budaya Taat Hukum</h4>
+                        <div class="space-y-2.5">
+                            <div class="item-justify">
+                                <span class="item-marker text-amber-400">1.</span>
+                                <div class="item-body"><strong>Lingkungan Keluarga:</strong> Mematuhi nasihat orang tua, menghormati anggota keluarga, melaksanakan ibadah tepat waktu, dan menaati aturan jam belajar di rumah.</div>
+                            </div>
+                            <div class="item-justify">
+                                <span class="item-marker text-amber-400">2.</span>
+                                <div class="item-body"><strong>Lingkungan Sekolah:</strong> Hadir tepat waktu, mengenakan seragam sesuai tata tertib, jujur saat ujian (tidak menyontek), serta menjauhi tindakan perundungan (<em>bullying</em>).</div>
+                            </div>
+                            <div class="item-justify">
+                                <span class="item-marker text-amber-400">3.</span>
+                                <div class="item-body"><strong>Lingkungan Masyarakat &amp; Negara:</strong> Menjaga ketertiban umum, membayar pajak tepat waktu, memiliki SIM dan memakai helm berstandar SNI saat berkendara, serta tidak menyebarkan berita bohong (<em>hoaks</em>).</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-slate-900/90 border border-rose-400/40 space-y-2.5">
+                        <h4 class="text-base font-black text-rose-300 uppercase">Mencegah Kasus Pelanggaran Hak: Stop Perundungan (Bullying)!</h4>
+                        <p class="para-justify text-slate-100">
+                            Salah satu bentuk pelanggaran hak dan hukum yang masih sering terjadi di lingkungan pendidikan adalah <strong>perundungan (<em>bullying</em>)</strong>, baik secara fisik, verbal, relasional, maupun siber (<em>cyberbullying</em>). Tindakan ini melanggar hak anak untuk mendapatkan rasa aman sebagaimana diatur dalam <strong>UU Perlindungan Anak</strong> dan bertentangan dengan nilai kemanusiaan yang adil dan beradab pada Pancasila serta <strong>Pasal 28B ayat (2) UUD NRI Tahun 1945</strong>.
+                        </p>
+                    </div>
+                </div>
+            `
+        },
+        {
+            title: "Hakikat Norma & Hubungan Norma dengan Hukum",
+            badge: "Bagian 7 / 10",
+            html: `
+                <div class="space-y-4">
+                    <div class="p-5 rounded-2xl bg-slate-900/90 border border-sky-400/40 space-y-3">
+                        <h4 class="text-base font-black text-sky-300 uppercase">Pengertian Norma dalam Kehidupan Bermasyarakat</h4>
+                        <p class="para-justify text-slate-100">
+                            Secara etimologis, kata <strong>norma</strong> berasal dari bahasa Belanda <em>"norm"</em> yang berarti patokan, pokok kaidah, atau pedoman, serta dari bahasa Latin <em>"mos"</em> (jamak: <em>mores</em>) yang berarti tata kelakuan atau adat istiadat. Menurut <strong>Kamus Besar Bahasa Indonesia (KBBI)</strong>, norma adalah aturan atau ketentuan yang mengikat warga kelompok dalam masyarakat, dipakai sebagai panduan, tatanan, dan pengendali tingkah laku yang sesuai dan berterima.
+                        </p>
+                        <p class="para-justify text-slate-100">
+                            Di dalam masyarakat terdapat empat macam norma utama, yaitu: <strong>Norma Agama, Norma Kesusilaan, Norma Kesopanan, dan Norma Hukum</strong>. Keempat norma tersebut saling melengkapi untuk mewujudkan ketertiban sosial.
+                        </p>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-slate-900/90 border border-emerald-400/40 space-y-2.5">
+                        <h4 class="text-base font-black text-emerald-300 uppercase">Keistimewaan Norma Hukum Dibandingkan Norma Lainnya</h4>
+                        <div class="item-justify">
+                            <span class="item-marker text-emerald-400">a.</span>
+                            <div class="item-body">Dibuat secara resmi oleh lembaga negara yang berwenang (eksekutif/legislatif).</div>
+                        </div>
+                        <div class="item-justify">
+                            <span class="item-marker text-emerald-400">b.</span>
+                            <div class="item-body">Bersifat <strong>memaksa dan mengikat</strong> bagi seluruh warga negara tanpa terkecuali.</div>
+                        </div>
+                        <div class="item-justify">
+                            <span class="item-marker text-emerald-400">c.</span>
+                            <div class="item-body">Memiliki <strong>sanksi yang tegas, nyata, dan dapat dipaksakan</strong> melalui aparat penegak hukum negara (Polisi, Jaksa, Hakim).</div>
+                        </div>
+                    </div>
+                </div>
+            `
+        },
+        {
+            title: "Aktivitas Belajar 2.2: Refleksi Pengetahuan Norma (Tabel KWL)",
+            badge: "Bagian 8 / 10",
+            html: `
+                <div class="space-y-4">
+                    <div class="p-5 rounded-2xl bg-slate-900/90 border border-amber-400/40 space-y-4">
+                        <h4 class="text-base font-black text-amber-300 uppercase flex items-center gap-2">
+                            <i class="fa-solid fa-table-columns"></i> Aktivitas Belajar 2.2: Tabel Refleksi Pemahaman Norma &amp; Hukum
+                        </h4>
+                        <p class="para-justify text-slate-200">
+                            Isilah tabel refleksi di bawah ini mengenai apa yang sudah kalian ketahui tentang norma dan hukum, apa yang ingin kalian ketahui lebih lanjut, serta pengetahuan baru apa yang telah kalian peroleh!
+                        </p>
+
+                        <div class="grid grid-cols-2 gap-3">
+                            <input id="a22-name" type="text" placeholder="Nama Lengkap..." oninput="saveAktivitas22Draft()" class="px-3.5 py-2 rounded-xl bg-slate-950 border border-slate-700 text-white text-sm font-semibold outline-none focus:border-amber-400">
+                            <input id="a22-class" type="text" placeholder="Kelas..." oninput="saveAktivitas22Draft()" class="px-3.5 py-2 rounded-xl bg-slate-950 border border-slate-700 text-white text-sm font-semibold outline-none focus:border-amber-400">
+                        </div>
+
+                        <div class="grid grid-cols-3 gap-3">
+                            <div class="p-3.5 rounded-2xl bg-slate-950 border border-sky-400/40 space-y-2">
+                                <div class="text-xs font-black text-sky-300 uppercase">1. Apa yang Sudah Saya Ketahui?</div>
+                                <textarea id="a22-tahu" rows="5" oninput="saveAktivitas22Draft()" placeholder="Tuliskan pengetahuan awalmu tentang norma & hukum..." class="w-full p-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm outline-none focus:border-sky-400"></textarea>
+                            </div>
+                            <div class="p-3.5 rounded-2xl bg-slate-950 border border-amber-400/40 space-y-2">
+                                <div class="text-xs font-black text-amber-300 uppercase">2. Apa yang Ingin Saya Ketahui?</div>
+                                <textarea id="a22-ingintahu" rows="5" oninput="saveAktivitas22Draft()" placeholder="Tuliskan hal yang ingin kamu pelajari lebih dalam..." class="w-full p-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm outline-none focus:border-amber-400"></textarea>
+                            </div>
+                            <div class="p-3.5 rounded-2xl bg-slate-950 border border-emerald-400/40 space-y-2">
+                                <div class="text-xs font-black text-emerald-300 uppercase">3. Hal Baru yang Saya Pelajari</div>
+                                <textarea id="a22-tahubaru" rows="5" oninput="saveAktivitas22Draft()" placeholder="Tuliskan ilmu baru yang kamu dapatkan..." class="w-full p-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm outline-none focus:border-emerald-400"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between">
+                            <span id="a22-feedback" class="text-xs font-bold text-emerald-300"></span>
+                            <div class="flex items-center gap-2">
+                                <button onclick="submitAktivitas22()" class="px-4 py-2 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs flex items-center gap-1.5 transition">
+                                    <i class="fa-solid fa-floppy-disk"></i> Simpan Tabel
+                                </button>
+                                <button onclick="downloadAktivitas22JPG()" class="px-4 py-2 rounded-xl bg-emerald-400 hover:bg-emerald-300 text-slate-950 font-black text-xs flex items-center gap-1.5 transition">
+                                    <i class="fa-solid fa-download"></i> Unduh (.JPG)
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `
+        },
+        {
+            title: "Tabel Jenis, Sumber, Contoh, dan Sanksi Norma",
+            badge: "Bagian 9 / 10",
+            html: `
+                <div class="space-y-4">
+                    <div class="p-5 rounded-2xl bg-slate-900/90 border border-amber-400/40 space-y-3">
+                        <h4 class="text-base font-black text-amber-300 uppercase flex items-center gap-2">
+                            <i class="fa-solid fa-table"></i> Matriks Perbandingan 4 Jenis Norma dalam Masyarakat
+                        </h4>
+                        <div class="overflow-x-auto rounded-2xl border border-slate-700">
+                            <table class="w-full text-left border-collapse text-[16px]">
+                                <thead>
+                                    <tr class="bg-amber-500/20 text-amber-300 font-black uppercase text-sm border-b border-slate-700">
+                                        <th class="p-3.5 border-r border-slate-700">Jenis Norma</th>
+                                        <th class="p-3.5 border-r border-slate-700">Pengertian</th>
+                                        <th class="p-3.5 border-r border-slate-700">Sumber</th>
+                                        <th class="p-3.5 border-r border-slate-700">Contoh Perilaku</th>
+                                        <th class="p-3.5 border-r border-slate-700">Contoh Pelanggaran</th>
+                                        <th class="p-3.5">Sanksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-800 text-slate-200 bg-slate-950/80">
+                                    <tr>
+                                        <td class="p-3 font-extrabold text-amber-300 border-r border-slate-800">1. Norma Agama</td>
+                                        <td class="p-3 border-r border-slate-800">Aturan hidup berupa perintah dan larangan Tuhan YME.</td>
+                                        <td class="p-3 border-r border-slate-800">Wahyu Tuhan / Kitab Suci</td>
+                                        <td class="p-3 border-r border-slate-800">Beribadah tepat waktu, toleransi antarumat beragama.</td>
+                                        <td class="p-3 border-r border-slate-800">Meninggalkan ibadah wajib, merusak tempat ibadah.</td>
+                                        <td class="p-3">Dosa dan balasan di akhirat.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 font-extrabold text-sky-300 border-r border-slate-800">2. Norma Kesusilaan</td>
+                                        <td class="p-3 border-r border-slate-800">Aturan hidup tentang baik-buruk perilaku berdasarkan bisikan kalbu.</td>
+                                        <td class="p-3 border-r border-slate-800">Hati Nurani Manusia</td>
+                                        <td class="p-3 border-r border-slate-800">Berkata jujur, mengembalikan barang temuan.</td>
+                                        <td class="p-3 border-r border-slate-800">Berbohong, menyontek saat ujian, memfitnah.</td>
+                                        <td class="p-3">Rasa menyesal, gelisah, dan malu pada diri sendiri.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 font-extrabold text-emerald-300 border-r border-slate-800">3. Norma Kesopanan</td>
+                                        <td class="p-3 border-r border-slate-800">Aturan pergaulan hidup yang lahir dari kebiasaan dan kepatutan masyarakat.</td>
+                                        <td class="p-3 border-r border-slate-800">Pergaulan &amp; Adat Masyarakat</td>
+                                        <td class="p-3 border-r border-slate-800">Menyapa guru, berbicara santun kepada yang lebih tua.</td>
+                                        <td class="p-3 border-r border-slate-800">Meludah sembarangan, memotong pembicaraan orang tua.</td>
+                                        <td class="p-3">Celaan, teguran, atau dikucilkan masyarakat.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 font-extrabold text-rose-300 border-r border-slate-800">4. Norma Hukum</td>
+                                        <td class="p-3 border-r border-slate-800">Aturan tertulis/tidak tertulis yang dibuat lembaga negara berwenang.</td>
+                                        <td class="p-3 border-r border-slate-800">Peraturan Perundang-undangan Negara</td>
+                                        <td class="p-3 border-r border-slate-800">Memakai helm SNI, membayar pajak, menaati rambu lalu lintas.</td>
+                                        <td class="p-3 border-r border-slate-800">Korupsi, mencuri, menerobos lampu merah, penganiayaan.</td>
+                                        <td class="p-3">Tegas &amp; memaksa (denda, kurungan/penjara).</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            `
+        },
+        {
+            title: "Aktivitas Belajar 2.3 (Tabel 2.2) & Tahukah Kalian: Arti Disiplin",
+            badge: "Bagian 10 / 10",
+            html: `
+                <div class="space-y-5">
+                    <div class="p-5 rounded-2xl bg-[#f5ebe0] text-slate-900 border-2 border-[#c8b094] shadow-xl space-y-4">
+                        <div class="text-center">
+                            <h4 class="text-lg font-extrabold tracking-tight">
+                                <span class="text-[#d96b27] font-black">Tabel 2.2</span> <span class="text-[#231f20] font-extrabold">Contoh Perilaku dan Manfaat Taat Hukum</span>
+                            </h4>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3">
+                            <input id="t22-name" type="text" placeholder="Nama Peserta Didik..." oninput="saveTabel22Draft()" class="px-3.5 py-2 rounded-xl bg-white border border-[#bfa588] text-slate-900 text-sm font-bold outline-none focus:border-[#d96b27]">
+                            <input id="t22-class" type="text" placeholder="Kelas..." oninput="saveTabel22Draft()" class="px-3.5 py-2 rounded-xl bg-white border border-[#bfa588] text-slate-900 text-sm font-bold outline-none focus:border-[#d96b27]">
+                        </div>
+
+                        <div class="overflow-x-auto rounded-lg border-2 border-[#bfa588]">
+                            <table class="w-full border-collapse text-base bg-white">
+                                <thead>
+                                    <tr class="bg-[#ead7c0] text-[#231f20] font-extrabold text-center border-b-2 border-[#bfa588]">
+                                        <th class="p-3 border-r-2 border-[#bfa588] w-[28%]">Bidang Pengamalan<br>Hidup Sehari-Hari</th>
+                                        <th class="p-3 border-r-2 border-[#bfa588] w-[36%]">Contoh Perilaku Taat<br>Hukum</th>
+                                        <th class="p-3 w-[36%]">Tujuan atau Manfaat</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y-2 divide-[#bfa588] text-[#231f20]">
+                                    ${['Pendidikan', 'Kesehatan', 'Kebebasan Beragama', 'Lalu Lintas', 'Sosial Kemasyarakatan'].map((bidang, idx) => `
+                                        <tr>
+                                            <td class="p-3 font-bold border-r-2 border-[#bfa588] align-middle bg-white text-[16px]">${bidang}</td>
+                                            <td class="p-2 border-r-2 border-[#bfa588] bg-white">
+                                                <textarea id="t22-perilaku-${idx}" rows="2" oninput="saveTabel22Draft()" placeholder="Ketik contoh perilaku taat hukum di bidang ${bidang.toLowerCase()}..." class="w-full p-2 rounded bg-[#fdfaf6] border border-[#d5c3ae] text-slate-900 text-[15px] outline-none focus:border-[#d96b27]"></textarea>
+                                            </td>
+                                            <td class="p-2 bg-white">
+                                                <textarea id="t22-manfaat-${idx}" rows="2" oninput="saveTabel22Draft()" placeholder="Ketik tujuan atau manfaatnya..." class="w-full p-2 rounded bg-[#fdfaf6] border border-[#d5c3ae] text-slate-900 text-[15px] outline-none focus:border-[#d96b27]"></textarea>
+                                            </td>
+                                        </tr>
+                                    `).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="flex items-center justify-between flex-wrap gap-2">
+                            <span id="t22-feedback" class="text-xs font-extrabold text-[#b45309]"></span>
+                            <div class="flex items-center gap-2">
+                                <button onclick="submitTabel22()" class="px-4 py-2 rounded-xl bg-[#d96b27] hover:bg-[#b8561b] text-white font-black text-xs flex items-center gap-1.5 transition shadow">
+                                    <i class="fa-solid fa-check-circle"></i> Simpan &amp; Lihat Referensi Jawaban
+                                </button>
+                                <button onclick="downloadTabel22JPG()" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs flex items-center gap-1.5 transition shadow">
+                                    <i class="fa-solid fa-file-image"></i> Unduh Tabel 2.2 (.JPG)
+                                </button>
+                            </div>
+                        </div>
+
+                        <div id="t22-reference-box" class="hidden p-4 rounded-xl bg-amber-50 border border-amber-300 text-slate-800 text-xs space-y-1.5">
+                            <div class="font-black text-amber-900 uppercase">Referensi Contoh Jawaban Tabel 2.2:</div>
+                            <div><strong>1. Pendidikan:</strong> Hadir tepat waktu, memakai seragam sesuai aturan, jujur saat ujian → <em>Manfaat:</em> Suasana belajar kondusif dan membentuk karakter berintegritas.</div>
+                            <div><strong>2. Kesehatan:</strong> Menjaga kebersihan lingkungan, tidak merokok di kawasan tanpa rokok, mengikuti imunisasi → <em>Manfaat:</em> Terhindar dari wabah penyakit dan masyarakat sehat.</div>
+                            <div><strong>3. Kebebasan Beragama:</strong> Menghormati umat lain yang sedang beribadah, tidak memaksakan agama → <em>Manfaat:</em> Tercipta kerukunan dan persatuan antarumat beragama.</div>
+                            <div><strong>4. Lalu Lintas:</strong> Memakai helm SNI, memiliki SIM, berhenti di belakang garis saat lampu merah → <em>Manfaat:</em> Keselamatan di jalan raya terjaga dan mencegah kecelakaan.</div>
+                            <div><strong>5. Sosial Kemasyarakatan:</strong> Mengikuti siskamling/kerja bakti, melapor kepada RT saat ada tamu menginap → <em>Manfaat:</em> Lingkungan aman, harmonis, dan tertib.</div>
+                        </div>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-slate-900/90 border border-emerald-400/40 space-y-2.5">
+                        <h4 class="text-base font-black text-emerald-300 uppercase flex items-center gap-2">
+                            <i class="fa-solid fa-lightbulb"></i> Tahukah Kalian? Arti Penting Disiplin dan Keseimbangan Hak &amp; Kewajiban
+                        </h4>
+                        <p class="para-justify text-slate-100">
+                            Kunci utama dari perilaku taat hukum adalah <strong>kedisiplinan</strong>. Disiplin merupakan perasaan taat dan patuh terhadap nilai-nilai yang dipercaya merupakan tanggung jawabnya. Selain itu, warga negara yang baik selalu menjaga keseimbangan antara pelaksanaan <strong>kewajiban konstitusional</strong> (seperti Pasal 27 ayat (1) UUD NRI Tahun 1945: wajib menjunjung hukum dan pemerintahan) dan penghormatan terhadap <strong>hak asasi warga negara lainnya</strong> agar tidak terjadi pelanggaran hak maupun pengingkaran kewajiban.
+                        </p>
+                    </div>
+                </div>
+            `
+        }
+    ];
+
+    // =========================================================================
+    // 2. RENDER & NAVIGASI MATERI + HANDLER AKTIVITAS INTERAKTIF
+    // =========================================================================
+    function renderMateriSlide() {
+        const slide = materiSections[currentMateriIndex];
+        if (!slide) return;
+
+        document.getElementById('materi-slide-badge').textContent = slide.badge;
+        document.getElementById('materi-slide-title').textContent = slide.title;
+        const bodyEl = document.getElementById('materi-slide-body');
+        bodyEl.innerHTML = slide.html;
+        bodyEl.scrollTop = 0;
+
+        // Restore drafts
+        if (currentMateriIndex === 1) restoreBagian2Inputs();
+        if (currentMateriIndex === 4) restoreAktivitas21Inputs();
+        if (currentMateriIndex === 7) restoreAktivitas22Inputs();
+        if (currentMateriIndex === 9) restoreTabel22Inputs();
+
+        // Dots
+        const dotsContainer = document.getElementById('materi-dots');
+        dotsContainer.innerHTML = materiSections.map((_, idx) => `
+            <button onclick="jumpToMateriSlide(${idx})" class="h-2.5 rounded-full transition-all ${idx === currentMateriIndex ? 'w-7 bg-amber-400' : 'w-2.5 bg-slate-700 hover:bg-slate-500'}" title="Bagian ${idx + 1}"></button>
+        `).join('');
+
+        const prevBtn = document.getElementById('btn-materi-prev');
+        const nextBtn = document.getElementById('btn-materi-next');
+        prevBtn.disabled = currentMateriIndex === 0;
+        prevBtn.classList.toggle('opacity-40', currentMateriIndex === 0);
+
+        if (currentMateriIndex === materiSections.length - 1) {
+            isMateriCompleted = true;
+            updateCoverProgressUI();
+            nextBtn.innerHTML = `<i class="fa-solid fa-gamepad"></i> <span>Selesai &amp; Buka Kuis TTS</span>`;
+        } else {
+            nextBtn.innerHTML = `<span>Selanjutnya</span> <i class="fa-solid fa-arrow-right"></i>`;
+        }
+
+        updateCoverProgressUI();
+    }
+
+    function changeMateriSlide(delta) {
+        playTone('click');
+        if (currentMateriIndex === materiSections.length - 1 && delta > 0) {
+            isMateriCompleted = true;
+            updateCoverProgressUI();
+            closeModal('modal-materi');
+            startAdventureGame();
+            return;
+        }
+        const nextIdx = currentMateriIndex + delta;
+        if (nextIdx >= 0 && nextIdx < materiSections.length) {
+            currentMateriIndex = nextIdx;
+            if (currentMateriIndex === materiSections.length - 1) isMateriCompleted = true;
+            renderMateriSlide();
+        }
+    }
+
+    function jumpToMateriSlide(idx) {
+        playTone('click');
+        currentMateriIndex = idx;
+        if (currentMateriIndex === materiSections.length - 1) isMateriCompleted = true;
+        renderMateriSlide();
+    }
+
+    function updateCoverProgressUI() {
+        const progressText = document.getElementById('cover-materi-progress-text');
+        const progressBar = document.getElementById('cover-materi-progress-bar');
+        const badgeStatus = document.getElementById('badge-materi-status');
+        const btnStart = document.getElementById('btn-start-adventure');
+        const iconStart = document.getElementById('icon-start-adventure');
+        const labelStart = document.getElementById('label-start-adventure');
+        const lockNotice = document.getElementById('cover-lock-notice');
+
+        const pct = isMateriCompleted ? 100 : Math.max(10, Math.round(((currentMateriIndex + 1) / materiSections.length) * 100));
+        if (progressBar) progressBar.style.width = `${pct}%`;
+
+        if (isMateriCompleted) {
+            if (progressText) {
+                progressText.textContent = 'Tuntas (10 / 10 Bagian)';
+                progressText.className = 'text-emerald-400 font-extrabold';
+            }
+            if (badgeStatus) {
+                badgeStatus.textContent = 'Tuntas Dipelajari';
+                badgeStatus.className = 'inline-block px-3 py-0.5 rounded-full bg-emerald-400 text-slate-950 font-extrabold text-[11px] uppercase shadow';
+            }
+            if (btnStart) {
+                btnStart.className = 'h-[74px] px-5 rounded-3xl bg-gradient-to-r from-amber-400 via-yellow-400 to-orange-500 hover:from-amber-300 hover:to-orange-400 border-2 border-amber-200 text-slate-950 font-black tracking-wide shadow-2xl flex items-center justify-between transition transform active:scale-98 shrink-0';
+            }
+            if (iconStart) iconStart.className = 'fa-solid fa-play text-slate-950 text-2xl';
+            if (labelStart) labelStart.textContent = 'MULAI KUIS TTS SEKARANG';
+            if (lockNotice) lockNotice.classList.add('hidden');
+        } else {
+            if (progressText) progressText.textContent = `Bagian ${currentMateriIndex + 1} / 10`;
+        }
+    }
+
+    // --- Drafts & JPG Export Helpers ---
+    function syncGlobalStudentIdentity(nameVal, classVal) {
+        if (nameVal && nameVal.trim()) globalStudentName = nameVal.trim();
+        if (classVal && classVal.trim()) globalStudentClass = classVal.trim();
+    }
+
+    function saveBagian2Draft() {
+        const n = document.getElementById('b2-student-name');
+        const c = document.getElementById('b2-student-class');
+        if (n) draftBagian2.studentName = n.value;
+        if (c) draftBagian2.studentClass = c.value;
+        syncGlobalStudentIdentity(draftBagian2.studentName, draftBagian2.studentClass);
+        for (let i = 0; i < 6; i++) {
+            const c1 = document.getElementById(`b2-col1-${i}`);
+            const c2 = document.getElementById(`b2-col2-${i}`);
+            if (c1) draftBagian2.col1[i] = c1.value;
+            if (c2) draftBagian2.col2[i] = c2.value;
+        }
+        const q1 = document.getElementById('bj-q1');
+        const q2 = document.getElementById('bj-q2');
+        const q3 = document.getElementById('bj-q3');
+        if (q1) draftBerlatihJujur.q1 = q1.value;
+        if (q2) draftBerlatihJujur.q2 = q2.value;
+        if (q3) draftBerlatihJujur.q3 = q3.value;
+    }
+
+    function restoreBagian2Inputs() {
+        const n = document.getElementById('b2-student-name');
+        const c = document.getElementById('b2-student-class');
+        if (n) n.value = draftBagian2.studentName || globalStudentName;
+        if (c) c.value = draftBagian2.studentClass || globalStudentClass;
+        for (let i = 0; i < 6; i++) {
+            const c1 = document.getElementById(`b2-col1-${i}`);
+            const c2 = document.getElementById(`b2-col2-${i}`);
+            if (c1) c1.value = draftBagian2.col1[i] || '';
+            if (c2) c2.value = draftBagian2.col2[i] || '';
+        }
+        const q1 = document.getElementById('bj-q1');
+        const q2 = document.getElementById('bj-q2');
+        const q3 = document.getElementById('bj-q3');
+        if (q1) q1.value = draftBerlatihJujur.q1 || '';
+        if (q2) q2.value = draftBerlatihJujur.q2 || '';
+        if (q3) q3.value = draftBerlatihJujur.q3 || '';
+    }
+
+    function submitBagian2Activity() {
+        saveBagian2Draft();
+        playTone('correct');
+        const fb = document.getElementById('b2-feedback-msg');
+        if (fb) fb.textContent = '✓ Jawaban Mari Berpikir Kritis & Berlatih Jujur berhasil disimpan!';
+    }
+
+    function downloadBagian2JPG() {
+        saveBagian2Draft();
+        const canvas = document.createElement('canvas');
+        canvas.width = 1200;
+        canvas.height = 900;
+        const ctx = canvas.getContext('2d');
+        ctx.fillStyle = '#0f172a';
+        ctx.fillRect(0, 0, 1200, 900);
+        ctx.strokeStyle = '#fbbf24';
+        ctx.lineWidth = 6;
+        ctx.strokeRect(20, 20, 1160, 860);
+
+        ctx.fillStyle = '#fbbf24';
+        ctx.font = 'bold 28px "Plus Jakarta Sans", sans-serif';
+        ctx.fillText('LEMBAR KERJA BAGIAN 2: MARI BERPIKIR KRITIS & BERLATIH JUJUR', 50, 75);
+        ctx.fillStyle = '#e2e8f0';
+        ctx.font = 'bold 18px "Plus Jakarta Sans", sans-serif';
+        ctx.fillText(`Nama: ${draftBagian2.studentName || globalStudentName || '-'}   |   Kelas: ${draftBagian2.studentClass || globalStudentClass || '-'}`, 50, 112);
+
+        ctx.fillStyle = '#34d399';
+        ctx.fillText('Perilaku yang Harus Dikembangkan:', 50, 160);
+        ctx.fillStyle = '#f8fafc';
+        ctx.font = '16px "Plus Jakarta Sans", sans-serif';
+        draftBagian2.col1.forEach((v, i) => ctx.fillText(`${i + 1}. ${v || '-'}`, 60, 192 + i * 30));
+
+        ctx.fillStyle = '#fb7185';
+        ctx.font = 'bold 18px "Plus Jakarta Sans", sans-serif';
+        ctx.fillText('Perilaku yang Harus Dihindari:', 620, 160);
+        ctx.fillStyle = '#f8fafc';
+        ctx.font = '16px "Plus Jakarta Sans", sans-serif';
+        draftBagian2.col2.forEach((v, i) => ctx.fillText(`${i + 1}. ${v || '-'}`, 630, 192 + i * 30));
+
+        ctx.fillStyle = '#38bdf8';
+        ctx.font = 'bold 20px "Plus Jakarta Sans", sans-serif';
+        ctx.fillText('Refleksi Berlatih Jujur:', 50, 415);
+        ctx.fillStyle = '#f8fafc';
+        ctx.font = '16px "Plus Jakarta Sans", sans-serif';
+        ctx.fillText(`1. Peraturan yang pernah dilanggar: ${(draftBerlatihJujur.q1 || '-').slice(0, 95)}`, 50, 455);
+        ctx.fillText(`2. Alasan melanggar: ${(draftBerlatihJujur.q2 || '-').slice(0, 95)}`, 50, 505);
+        ctx.fillText(`3. Komitmen ke depan: ${(draftBerlatihJujur.q3 || '-').slice(0, 95)}`, 50, 555);
+
+        const link = document.createElement('a');
+        link.download = `LKPD_Bagian2_${(draftBagian2.studentName || 'Siswa').replace(/\s+/g, '_')}.jpg`;
+        link.href = canvas.toDataURL('image/jpeg', 0.92);
+        link.click();
+    }
+
+    function saveAktivitas21Draft() {
+        const n = document.getElementById('a21-name');
+        const c = document.getElementById('a21-class');
+        const a = document.getElementById('a21-ans');
+        if (n) draftAktivitas21.studentName = n.value;
+        if (c) draftAktivitas21.studentClass = c.value;
+        if (a) draftAktivitas21.studentAns = a.value;
+        syncGlobalStudentIdentity(draftAktivitas21.studentName, draftAktivitas21.studentClass);
+    }
+    function restoreAktivitas21Inputs() {
+        const n = document.getElementById('a21-name');
+        const c = document.getElementById('a21-class');
+        const a = document.getElementById('a21-ans');
+        if (n) n.value = draftAktivitas21.studentName || globalStudentName;
+        if (c) c.value = draftAktivitas21.studentClass || globalStudentClass;
+        if (a) a.value = draftAktivitas21.studentAns || '';
+    }
+    function submitAktivitas21() {
+        saveAktivitas21Draft();
+        playTone('correct');
+        const fb = document.getElementById('a21-feedback');
+        if (fb) fb.textContent = '✓ Hasil analisis Aktivitas 2.1 berhasil disimpan!';
+    }
+    function downloadAktivitas21JPG() {
+        saveAktivitas21Draft();
+        const canvas = document.createElement('canvas');
+        canvas.width = 1100;
+        canvas.height = 650;
+        const ctx = canvas.getContext('2d');
+        ctx.fillStyle = '#0f172a';
+        ctx.fillRect(0, 0, 1100, 650);
+        ctx.strokeStyle = '#fbbf24';
+        ctx.lineWidth = 5;
+        ctx.strokeRect(20, 20, 1060, 610);
+        ctx.fillStyle = '#fbbf24';
+        ctx.font = 'bold 26px "Plus Jakarta Sans", sans-serif';
+        ctx.fillText('AKTIVITAS BELAJAR 2.1: ANALISIS PERILAKU HUKUM', 45, 70);
+        ctx.fillStyle = '#f8fafc';
+        ctx.font = 'bold 18px "Plus Jakarta Sans", sans-serif';
+        ctx.fillText(`Nama: ${draftAktivitas21.studentName || globalStudentName || '-'}   |   Kelas: ${draftAktivitas21.studentClass || globalStudentClass || '-'}`, 45, 110);
+        ctx.font = '16px "Plus Jakarta Sans", sans-serif';
+        const text = draftAktivitas21.studentAns || '-';
+        const words = text.split(' ');
+        let line = '', y = 165;
+        words.forEach(w => {
+            if ((line + w).length > 88) {
+                ctx.fillText(line, 45, y);
+                line = w + ' ';
+                y += 28;
+            } else {
+                line += w + ' ';
+            }
+        });
+        if (line) ctx.fillText(line, 45, y);
+        const link = document.createElement('a');
+        link.download = `Aktivitas_2_1_${(draftAktivitas21.studentName || 'Siswa').replace(/\s+/g, '_')}.jpg`;
+        link.href = canvas.toDataURL('image/jpeg', 0.92);
+        link.click();
+    }
+
+    function saveAktivitas22Draft() {
+        const n = document.getElementById('a22-name');
+        const c = document.getElementById('a22-class');
+        const t1 = document.getElementById('a22-tahu');
+        const t2 = document.getElementById('a22-ingintahu');
+        const t3 = document.getElementById('a22-tahubaru');
+        if (n) draftAktivitas22.studentName = n.value;
+        if (c) draftAktivitas22.studentClass = c.value;
+        if (t1) draftAktivitas22.tahu = t1.value;
+        if (t2) draftAktivitas22.ingintahu = t2.value;
+        if (t3) draftAktivitas22.tahubaru = t3.value;
+        syncGlobalStudentIdentity(draftAktivitas22.studentName, draftAktivitas22.studentClass);
+    }
+    function restoreAktivitas22Inputs() {
+        const n = document.getElementById('a22-name');
+        const c = document.getElementById('a22-class');
+        const t1 = document.getElementById('a22-tahu');
+        const t2 = document.getElementById('a22-ingintahu');
+        const t3 = document.getElementById('a22-tahubaru');
+        if (n) n.value = draftAktivitas22.studentName || globalStudentName;
+        if (c) c.value = draftAktivitas22.studentClass || globalStudentClass;
+        if (t1) t1.value = draftAktivitas22.tahu || '';
+        if (t2) t2.value = draftAktivitas22.ingintahu || '';
+        if (t3) t3.value = draftAktivitas22.tahubaru || '';
+    }
+    function submitAktivitas22() {
+        saveAktivitas22Draft();
+        playTone('correct');
+        const fb = document.getElementById('a22-feedback');
+        if (fb) fb.textContent = '✓ Tabel Refleksi Aktivitas 2.2 berhasil disimpan!';
+    }
+    function downloadAktivitas22JPG() {
+        saveAktivitas22Draft();
+        const canvas = document.createElement('canvas');
+        canvas.width = 1200;
+        canvas.height = 700;
+        const ctx = canvas.getContext('2d');
+        ctx.fillStyle = '#0f172a';
+        ctx.fillRect(0, 0, 1200, 700);
+        ctx.strokeStyle = '#fbbf24';
+        ctx.lineWidth = 5;
+        ctx.strokeRect(20, 20, 1160, 660);
+        ctx.fillStyle = '#fbbf24';
+        ctx.font = 'bold 26px "Plus Jakarta Sans", sans-serif';
+        ctx.fillText('AKTIVITAS BELAJAR 2.2: TABEL REFLEKSI PEMAHAMAN NORMA', 45, 70);
+        ctx.fillStyle = '#f8fafc';
+        ctx.font = 'bold 18px "Plus Jakarta Sans", sans-serif';
+        ctx.fillText(`Nama: ${draftAktivitas22.studentName || globalStudentName || '-'}   |   Kelas: ${draftAktivitas22.studentClass || globalStudentClass || '-'}`, 45, 110);
+        ctx.font = '16px "Plus Jakarta Sans", sans-serif';
+        ctx.fillStyle = '#38bdf8';
+        ctx.fillText(`1. Sudah Diketahui: ${(draftAktivitas22.tahu || '-').slice(0, 95)}`, 45, 175);
+        ctx.fillStyle = '#fbbf24';
+        ctx.fillText(`2. Ingin Diketahui: ${(draftAktivitas22.ingintahu || '-').slice(0, 95)}`, 45, 255);
+        ctx.fillStyle = '#34d399';
+        ctx.fillText(`3. Pengetahuan Baru: ${(draftAktivitas22.tahubaru || '-').slice(0, 95)}`, 45, 335);
+        const link = document.createElement('a');
+        link.download = `Aktivitas_2_2_${(draftAktivitas22.studentName || 'Siswa').replace(/\s+/g, '_')}.jpg`;
+        link.href = canvas.toDataURL('image/jpeg', 0.92);
+        link.click();
+    }
+
+    function saveTabel22Draft() {
+        const n = document.getElementById('t22-name');
+        const c = document.getElementById('t22-class');
+        if (n) draftTabel22.studentName = n.value;
+        if (c) draftTabel22.studentClass = c.value;
+        syncGlobalStudentIdentity(draftTabel22.studentName, draftTabel22.studentClass);
+        for (let i = 0; i < 5; i++) {
+            const p = document.getElementById(`t22-perilaku-${i}`);
+            const m = document.getElementById(`t22-manfaat-${i}`);
+            draftTabel22.rows[i] = {
+                perilaku: p ? p.value : draftTabel22.rows[i].perilaku,
+                manfaat: m ? m.value : draftTabel22.rows[i].manfaat
+            };
+        }
+    }
+    function restoreTabel22Inputs() {
+        const n = document.getElementById('t22-name');
+        const c = document.getElementById('t22-class');
+        if (n) n.value = draftTabel22.studentName || globalStudentName;
+        if (c) c.value = draftTabel22.studentClass || globalStudentClass;
+        for (let i = 0; i < 5; i++) {
+            const p = document.getElementById(`t22-perilaku-${i}`);
+            const m = document.getElementById(`t22-manfaat-${i}`);
+            if (p) p.value = draftTabel22.rows[i].perilaku || '';
+            if (m) m.value = draftTabel22.rows[i].manfaat || '';
+        }
+        const refBox = document.getElementById('t22-reference-box');
+        if (refBox && draftTabel22.isSubmitted) refBox.classList.remove('hidden');
+    }
+    function submitTabel22() {
+        saveTabel22Draft();
+        draftTabel22.isSubmitted = true;
+        playTone('correct');
+        const fb = document.getElementById('t22-feedback');
+        if (fb) fb.textContent = '✓ Tabel 2.2 berhasil disimpan! Referensi jawaban ditampilkan di bawah.';
+        const refBox = document.getElementById('t22-reference-box');
+        if (refBox) refBox.classList.remove('hidden');
+    }
+    function downloadTabel22JPG() {
+        saveTabel22Draft();
+        const canvas = document.createElement('canvas');
+        canvas.width = 1200;
+        canvas.height = 760;
+        const ctx = canvas.getContext('2d');
+        ctx.fillStyle = '#f5ebe0';
+        ctx.fillRect(0, 0, 1200, 760);
+
+        ctx.fillStyle = '#d96b27';
+        ctx.font = 'bold 26px "Plus Jakarta Sans", sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('Tabel 2.2 Contoh Perilaku dan Manfaat Taat Hukum', 600, 55);
+
+        ctx.textAlign = 'left';
+        ctx.fillStyle = '#231f20';
+        ctx.font = 'bold 16px "Plus Jakarta Sans", sans-serif';
+        ctx.fillText(`Nama: ${draftTabel22.studentName || globalStudentName || '-'}     |     Kelas: ${draftTabel22.studentClass || globalStudentClass || '-'}`, 50, 92);
+
+        // Table Header
+        ctx.fillStyle = '#ead7c0';
+        ctx.fillRect(50, 110, 1100, 65);
+        ctx.strokeStyle = '#bfa588';
+        ctx.lineWidth = 2;
+        ctx.strokeRect(50, 110, 1100, 65);
+
+        ctx.fillStyle = '#231f20';
+        ctx.font = 'bold 17px "Plus Jakarta Sans", sans-serif';
+        ctx.fillText('Bidang Pengamalan Hidup Sehari-Hari', 65, 148);
+        ctx.fillText('Contoh Perilaku Taat Hukum', 410, 148);
+        ctx.fillText('Tujuan atau Manfaat', 790, 148);
+
+        const bidangList = ['Pendidikan', 'Kesehatan', 'Kebebasan Beragama', 'Lalu Lintas', 'Sosial Kemasyarakatan'];
+        bidangList.forEach((b, idx) => {
+            const topY = 175 + idx * 105;
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(50, topY, 1100, 105);
+            ctx.strokeRect(50, topY, 1100, 105);
+
+            ctx.fillStyle = '#231f20';
+            ctx.font = 'bold 16px "Plus Jakarta Sans", sans-serif';
+            ctx.fillText(b, 65, topY + 55);
+
+            ctx.font = '15px "Plus Jakarta Sans", sans-serif';
+            ctx.fillText((draftTabel22.rows[idx].perilaku || '-').slice(0, 48), 410, topY + 55);
+            ctx.fillText((draftTabel22.rows[idx].manfaat || '-').slice(0, 48), 790, topY + 55);
+        });
+
+        ctx.beginPath();
+        ctx.moveTo(395, 110); ctx.lineTo(395, 700);
+        ctx.moveTo(775, 110); ctx.lineTo(775, 700);
+        ctx.stroke();
+
+        const link = document.createElement('a');
+        link.download = `Tabel_2_2_${(draftTabel22.studentName || 'Siswa').replace(/\s+/g, '_')}.jpg`;
+        link.href = canvas.toDataURL('image/jpeg', 0.94);
+        link.click();
+    }
+
+    // =========================================================================
+    // 3. DATA & LOGIKA GAME KUIS TTS 5 LEVEL (30 SOAL SESUAI TP BAB 2)
+    // =========================================================================
+    const ttsLevelsData = {
+        1: {
+            title: "Level 1 • Dasar Kesadaran & Ketaatan Hukum (5 Soal)",
+            words: [
+                { num: 1, dir: 'across', row: 2, col: 1, answer: 'HUKUM', clue: 'Sistem peraturan yang mengikat dan dibuat oleh lembaga negara berwenang serta memiliki sanksi tegas.', explanation: 'Hukum adalah peraturan resmi yang bersifat memaksa dan mengikat warga masyarakat demi ketertiban dan keadilan.' },
+                { num: 2, dir: 'down',   row: 1, col: 2, answer: 'NURANI', clue: 'Sumber dari norma kesusilaan yang berasal dari bisikan kalbu atau hati manusia.', explanation: 'Norma kesusilaan bersumber dari hati nurani manusia untuk membedakan perbuatan baik dan buruk.' },
+                { num: 3, dir: 'across', row: 5, col: 2, answer: 'NORMA', clue: 'Aturan atau kaidah yang dipakai sebagai panduan dan pengendali tingkah laku di masyarakat.', explanation: 'Norma merupakan patokan atau pedoman perilaku yang berlaku dalam kehidupan bermasyarakat.' },
+                { num: 4, dir: 'down',   row: 2, col: 5, answer: 'MORAL', clue: 'Ajaran tentang baik buruk yang diterima umum mengenai perbuatan dan sikap.', explanation: 'Moral berkaitan erat dengan akhlak, budi pekerti, dan kesusilaan seseorang di masyarakat.' },
+                { num: 5, dir: 'across', row: 1, col: 5, answer: 'SANKSI', clue: 'Konsekuensi atau hukuman tegas yang diberikan kepada pelanggar peraturan hukum.', explanation: 'Sanksi hukum bersifat tegas, nyata, dan memaksa terhadap setiap pelanggaran.' }
+            ]
+        },
+        2: {
+            title: "Level 2 • Sumber Norma & Penegakan Hukum (5 Soal)",
+            words: [
+                { num: 1, dir: 'across', row: 3, col: 1, answer: 'DISIPLIN', clue: 'Sikap mental patuh dan taat terhadap tata tertib maupun aturan yang berlaku secara bertanggung jawab.', explanation: 'Disiplin adalah kunci utama tumbuhnya budaya taat hukum baik di rumah, sekolah, maupun masyarakat.' },
+                { num: 2, dir: 'down',   row: 1, col: 3, answer: 'AGAMA', clue: 'Norma yang bersumber dari wahyu Tuhan Yang Maha Esa di dalam kitab suci.', explanation: 'Norma agama berisi perintah dan larangan Tuhan YME dengan sanksi dosa.' },
+                { num: 3, dir: 'down',   row: 2, col: 6, answer: 'POLISI', clue: 'Aparat negara yang bertugas memelihara keamanan dan ketertiban masyarakat serta menegakkan hukum.', explanation: 'Kepolisian Negara RI berperan menjaga kamtibmas, menegakkan hukum, dan mengayomi warga.' },
+                { num: 4, dir: 'across', row: 6, col: 3, answer: 'PAJAK', clue: 'Iuran wajib warga negara kepada negara berdasarkan undang-undang untuk pembangunan nasional.', explanation: 'Membayar pajak tepat waktu merupakan wujud kepatuhan hukum dan kewajiban warga negara.' },
+                { num: 5, dir: 'down',   row: 3, col: 8, answer: 'ADAT', clue: 'Aturan kebiasaan turun-temurun yang tumbuh dan dihormati dalam suatu masyarakat daerah.', explanation: 'Hukum adat atau norma adat bersumber dari kebiasaan sosial masyarakat setempat.' }
+            ]
+        },
+        3: {
+            title: "Level 3 • Perilaku Taat Hukum Sehari-Hari (5 Soal)",
+            words: [
+                { num: 1, dir: 'across', row: 3, col: 1, answer: 'KEADILAN', clue: 'Tujuan utama hukum agar setiap orang memperoleh apa yang menjadi haknya secara proporsional.', explanation: 'Hukum bertujuan mewujudkan keadilan sosial, kepastian hukum, dan kemanfaatan bersama.' },
+                { num: 2, dir: 'down',   row: 1, col: 2, answer: ' TERTIB', clue: 'Kondisi teratur dan rapi sebagai manfaat utama apabila warga mematuhi peraturan.', explanation: 'Perilaku taat hukum menciptakan ketertiban dan ketenteraman di masyarakat.' },
+                { num: 3, dir: 'down',   row: 2, col: 5, answer: 'CICERO', clue: 'Filsuf Romawi pencetus adagium "Ubi societas ibi ius" (di mana ada masyarakat di sana ada hukum).', explanation: 'Marcus Tullius Cicero menegaskan bahwa setiap masyarakat pasti membutuhkan hukum.' },
+                { num: 4, dir: 'across', row: 6, col: 3, answer: 'JUJUR', clue: 'Perilaku taat norma di sekolah dengan tidak menyontek saat mengerjakan ujian.', explanation: 'Kejujuran akademik adalah fondasi utama integritas dan budaya taat aturan di sekolah.' },
+                { num: 5, dir: 'down',   row: 2, col: 8, answer: 'DAMAI', clue: 'Suasana rukun dan tenteram tanpa pertikaian berkat adanya kepatuhan hukum.', explanation: 'Kedamaian sosial terwujud ketika setiap warga saling menghormati hak dan mematuhi hukum.' }
+            ]
+        },
+        4: {
+            title: "Level 4 • Ciri Hukum & Kewajiban Konstitusional (7 Soal)",
+            words: [
+                { num: 1, dir: 'across', row: 3, col: 1, answer: 'KONSTITUSI', clue: 'Hukum dasar tertinggi yang menjadi acuan seluruh peraturan perundang-undangan di Indonesia.', explanation: 'UUD NRI Tahun 1945 adalah konstitusi tertulis yang menjadi hukum dasar negara Indonesia.' },
+                { num: 2, dir: 'down',   row: 1, col: 2, answer: 'SOPAN', clue: 'Sikap santun dan menghormati orang lain sesuai norma kesopanan di masyarakat.', explanation: 'Norma kesopanan menuntut sikap sopan santun dalam pergaulan sehari-hari.' },
+                { num: 3, dir: 'down',   row: 2, col: 5, answer: 'MEMAKSA', clue: 'Sifat khas norma hukum agar aturannya wajib dipatuhi oleh seluruh warga negara tanpa terkecuali.', explanation: 'Norma hukum bersifat mengikat dan memaksa disertai ancaman sanksi tegas.' },
+                { num: 4, dir: 'across', row: 6, col: 4, answer: 'HAKIM', clue: 'Pejabat peradilan negara yang diberi wewenang oleh undang-undang untuk memutus perkara di pengadilan.', explanation: 'Hakim bertugas memeriksa, mengadili, dan memutus perkara secara adil di pengadilan.' },
+                { num: 5, dir: 'down',   row: 2, col: 8, answer: 'JAKSA', clue: 'Pejabat fungsional yang diberi wewenang oleh undang-undang untuk bertindak sebagai penuntut umum.', explanation: 'Jaksa melaksanakan penuntutan perkara pidana di sidang pengadilan.' },
+                { num: 6, dir: 'across', row: 1, col: 7, answer: 'SIM', clue: 'Surat izin resmi yang wajib dimiliki oleh setiap pengendara kendaraan bermotor di jalan raya.', explanation: 'Memiliki Surat Izin Mengemudi (SIM) adalah bukti kompetensi dan ketaatan hukum berlalu lintas.' },
+                { num: 7, dir: 'across', row: 8, col: 2, answer: 'ATURAN', clue: 'Ketentuan yang telah ditetapkan supaya dipatuhi oleh setiap anggota masyarakat.', explanation: 'Aturan dibuat agar kehidupan bersama berjalan teratur dan selaras.' }
+            ]
+        },
+        5: {
+            title: "Level 5 • Analisis Pelanggaran Hak & Pengingkaran Kewajiban (8 Soal)",
+            words: [
+                { num: 1, dir: 'across', row: 3, col: 1, answer: 'TOLERANSI', clue: 'Sikap saling menghormati kebebasan beragama dan keyakinan orang lain sesuai Pasal 29 UUD NRI Tahun 1945.', explanation: 'Toleransi mencegah konflik dan melindungi hak kebebasan beragama setiap warga negara.' },
+                { num: 2, dir: 'down',   row: 1, col: 2, answer: 'KORUPSI', clue: 'Kejahatan luar biasa menyalahgunakan uang negara yang melanggar hukum dan merugikan hak rakyat.', explanation: 'Korupsi merupakan pelanggaran hukum berat yang merampas hak kesejahteraan masyarakat.' },
+                { num: 3, dir: 'down',   row: 2, col: 5, answer: 'RAMBU', clue: 'Tanda atau petunjuk di jalan raya yang wajib dipatuhi pengendara demi keselamatan bersama.', explanation: 'Mematuhi rambu lalu lintas mencegah kecelakaan dan menjaga hak keselamatan pengguna jalan.' },
+                { num: 4, dir: 'across', row: 6, col: 1, answer: ' SANKSI', clue: 'Hukuman tegas bagi pelaku pengingkaran kewajiban dan pelanggaran hukum.', explanation: 'Sanksi diberikan untuk memberikan efek jera dan memulihkan ketertiban hukum.' },
+                { num: 5, dir: 'down',   row: 1, col: 8, answer: 'HOAKS', clue: 'Berita bohong atau fitnah di media sosial yang melanggar UU ITE dan merugikan hak orang lain.', explanation: 'Menyebarkan hoaks adalah perbuatan melawan hukum yang memicu perpecahan masyarakat.' },
+                { num: 6, dir: 'across', row: 1, col: 5, answer: 'HELM', clue: 'Pelindung kepala berstandar SNI yang wajib dipakai pengendara sepeda motor.', explanation: 'Memakai helm SNI adalah kewajiban hukum menurut UU Lalu Lintas dan Angkutan Jalan.' },
+                { num: 7, dir: 'across', row: 5, col: 7, answer: 'SNI', clue: 'Singkatan Standar Nasional Indonesia yang wajib dipenuhi pada perlengkapan keselamatan berkendara.', explanation: 'SNI menjamin mutu dan keamanan produk termasuk helm pengendara motor.' },
+                { num: 8, dir: 'down',   row: 3, col: 9, answer: 'ADIL', clue: 'Tidak berat sebelah dan tidak sewenang-wenang dalam menegakkan hukum serta menghormati hak orang lain.', explanation: 'Bersikap adil merupakan perwujudan sila kedua dan kelima Pancasila dalam penegakan hukum.' }
+            ]
+        }
+    };
+
+    // Normalize trimmed answers & build state
+    Object.keys(ttsLevelsData).forEach(lv => {
+        ttsLevelsData[lv].words.forEach(w => { w.answer = w.answer.trim().toUpperCase(); });
+    });
+
+    let currentTTSLevel = 1;
+    let unlockedTTSLevel = 1;
+    let ttsHintsLeft = 12;
+    let ttsScore = 0;
+    let activeWordObj = null;
+    let activeCellCoord = null;
+    let ttsUserInputs = {}; // { lv: { "r,c": "A" } }
+    let ttsSolvedWords = {}; // { lv: Set(wordNum_dir) }
+    let ttsCheckedWordsStatus = {}; // { lv: { "num_dir": "correct" | "wrong" } }
+
+    function initTTSState() {
+        for (let lv = 1; lv <= 5; lv++) {
+            if (!ttsUserInputs[lv]) ttsUserInputs[lv] = {};
+            if (!ttsSolvedWords[lv]) ttsSolvedWords[lv] = new Set();
+            if (!ttsCheckedWordsStatus[lv]) ttsCheckedWordsStatus[lv] = {};
+        }
+    }
+    initTTSState();
+
+    function handleStartAdventureClick() {
+        if (!isMateriCompleted) {
+            playTone('wrong');
+            const notice = document.getElementById('cover-lock-notice');
+            if (notice) {
+                notice.classList.remove('hidden');
+                notice.classList.add('flex');
+            }
+            return;
+        }
+        startAdventureGame();
+    }
+
+    function startAdventureGame() {
+        playTone('click');
+        document.getElementById('main-cover-screen').classList.add('hidden');
+        document.getElementById('game-screen-container').classList.remove('hidden');
+        document.getElementById('game-hud-center').classList.remove('hidden');
+        document.getElementById('game-hud-center').classList.add('flex');
+        document.getElementById('game-hud-score').classList.remove('hidden');
+        document.getElementById('game-hud-score').classList.add('flex');
+        renderVirtualKeyboard();
+        switchTTSLevel(currentTTSLevel);
+    }
+
+    function exitGameToCover() {
+        playTone('click');
+        document.getElementById('game-screen-container').classList.add('hidden');
+        document.getElementById('main-cover-screen').classList.remove('hidden');
+        document.getElementById('game-hud-center').classList.add('hidden');
+        document.getElementById('game-hud-center').classList.remove('flex');
+        document.getElementById('game-hud-score').classList.add('hidden');
+        document.getElementById('game-hud-score').classList.remove('flex');
+        updateCoverProgressUI();
+    }
+
+    function switchTTSLevel(lv) {
+        if (lv > unlockedTTSLevel) {
+            playTone('wrong');
+            const expEl = document.getElementById('tts-explanation-text');
+            if (expEl) expEl.innerHTML = `<span class="text-rose-400 font-extrabold">Level ${lv} masih terkunci!</span> Selesaikan seluruh kata pada <strong>Level ${unlockedTTSLevel}</strong> terlebih dahulu.`;
+            return;
+        }
+        currentTTSLevel = lv;
+        const lvData = ttsLevelsData[lv];
+        document.getElementById('tts-level-badge-pill').textContent = `LEVEL ${lv}`;
+        document.getElementById('tts-level-title').textContent = lvData.title;
+
+        updateTTSLevelTabsUI();
+        activeWordObj = lvData.words[0];
+        activeCellCoord = { row: activeWordObj.row, col: activeWordObj.col };
+        renderTTSBoard();
+        renderTTSClues();
+        updateActiveClueBanner();
+        updateTTSHUD();
+    }
+
+    function updateTTSLevelTabsUI() {
+        const counts = { 1: 5, 2: 5, 3: 5, 4: 7, 5: 8 };
+        for (let i = 1; i <= 5; i++) {
+            const btn = document.getElementById(`tab-tts-lv${i}`);
+            if (!btn) continue;
+            const isUnlocked = i <= unlockedTTSLevel;
+            const isCurrent = i === currentTTSLevel;
+            if (isCurrent) {
+                btn.className = 'px-2.5 py-1 rounded-lg text-[11px] font-extrabold transition bg-amber-400 text-slate-950 flex items-center gap-1 shadow';
+                btn.innerHTML = `<i class="fa-solid fa-star text-[10px]"></i><span>Lv ${i} (${counts[i]})</span>`;
+            } else if (isUnlocked) {
+                btn.className = 'px-2.5 py-1 rounded-lg text-[11px] font-extrabold transition bg-emerald-500/20 border border-emerald-400/50 text-emerald-300 hover:bg-emerald-500/30 flex items-center gap-1';
+                btn.innerHTML = `<i class="fa-solid fa-unlock text-[10px]"></i><span>Lv ${i} (${counts[i]})</span>`;
+            } else {
+                btn.className = 'px-2.5 py-1 rounded-lg text-[11px] font-extrabold transition bg-slate-900 text-slate-500 border border-slate-800 flex items-center gap-1 cursor-not-allowed';
+                btn.innerHTML = `<i class="fa-solid fa-lock text-[10px]"></i><span>Lv ${i} (${counts[i]})</span>`;
+            }
+        }
+    }
+
+    function getLevelCellMap(lv) {
+        const lvData = ttsLevelsData[lv];
+        const map = {};
+        let minR = 99, maxR = 0, minC = 99, maxC = 0;
+
+        lvData.words.forEach(w => {
+            for (let i = 0; i < w.answer.length; i++) {
+                const r = w.dir === 'across' ? w.row : w.row + i;
+                const c = w.dir === 'across' ? w.col + i : w.col;
+                const key = `${r},${c}`;
+                if (!map[key]) map[key] = { row: r, col: c, solution: w.answer[i], words: [], startNums: [] };
+                map[key].words.push(w);
+                if (i === 0 && !map[key].startNums.includes(w.num)) {
+                    map[key].startNums.push(w.num);
+                }
+                if (r < minR) minR = r;
+                if (r > maxR) maxR = r;
+                if (c < minC) minC = c;
+                if (c > maxC) maxC = c;
+            }
+        });
+        return { map, minR, maxR, minC, maxC };
+    }
+
+    function renderTTSBoard() {
+        const board = document.getElementById('tts-grid-board');
+        if (!board) return;
+        const { map, minR, maxR, minC, maxC } = getLevelCellMap(currentTTSLevel);
+        const rows = maxR - minR + 1;
+        const cols = maxC - minC + 1;
+
+        const maxDim = Math.max(rows, cols);
+        const cellSize = maxDim <= 8 ? 42 : (maxDim <= 10 ? 38 : 35);
+
+        board.style.gridTemplateColumns = `repeat(${cols}, ${cellSize}px)`;
+        board.style.gridTemplateRows = `repeat(${rows}, ${cellSize}px)`;
+        board.innerHTML = '';
+
+        const activeCellsSet = new Set();
+        if (activeWordObj) {
+            for (let i = 0; i < activeWordObj.answer.length; i++) {
+                const r = activeWordObj.dir === 'across' ? activeWordObj.row : activeWordObj.row + i;
+                const c = activeWordObj.dir === 'across' ? activeWordObj.col + i : activeWordObj.col;
+                activeCellsSet.add(`${r},${c}`);
+            }
+        }
+
+        for (let r = minR; r <= maxR; r++) {
+            for (let c = minC; c <= maxC; c++) {
+                const key = `${r},${c}`;
+                const cellData = map[key];
+                const div = document.createElement('div');
+                div.style.width = `${cellSize}px`;
+                div.style.height = `${cellSize}px`;
+
+                if (!cellData) {
+                    div.className = 'rounded-lg bg-slate-900/25 border border-slate-900/40 pointer-events-none';
+                    board.appendChild(div);
+                    continue;
+                }
+
+                const userChar = ttsUserInputs[currentTTSLevel][key] || '';
+                const isFocused = activeCellCoord && activeCellCoord.row === r && activeCellCoord.col === c;
+                const isInActiveWord = activeCellsSet.has(key);
+
+                const isCellLockedSolved = cellData.words.some(w => ttsSolvedWords[currentTTSLevel].has(`${w.num}_${w.dir}`));
+                const isCellMarkedWrong = !isCellLockedSolved && cellData.words.some(w => ttsCheckedWordsStatus[currentTTSLevel][`${w.num}_${w.dir}`] === 'wrong');
+
+                let bgClass = 'bg-slate-900 border-2 border-slate-600 text-white hover:border-amber-300';
+                if (isCellLockedSolved) {
+                    bgClass = 'bg-emerald-500/30 border-2 border-emerald-400 text-emerald-200 shadow-inner';
+                } else if (isCellMarkedWrong) {
+                    bgClass = 'bg-rose-500/30 border-2 border-rose-400 text-rose-200';
+                } else if (isInActiveWord) {
+                    bgClass = 'bg-sky-500/25 border-2 border-sky-400 text-white';
+                }
+
+                if (isFocused) {
+                    bgClass += ' ring-2 ring-amber-400 scale-105 z-10 bg-amber-500/30 border-amber-300';
+                }
+
+                div.className = `tts-cell text-base ${bgClass}`;
+                div.onclick = () => handleCellClick(r, c, cellData);
+
+                if (cellData.startNums.length > 0) {
+                    const numSpan = document.createElement('span');
+                    numSpan.className = 'tts-cell-num text-amber-300';
+                    numSpan.textContent = cellData.startNums.join('/');
+                    div.appendChild(numSpan);
+                }
+
+                const charSpan = document.createElement('span');
+                charSpan.textContent = userChar;
+                div.appendChild(charSpan);
+
+                board.appendChild(div);
+            }
+        }
+    }
+
+    function handleCellClick(r, c, cellData) {
+        playTone('click');
+        if (activeCellCoord && activeCellCoord.row === r && activeCellCoord.col === c && cellData.words.length > 1) {
+            const idx = cellData.words.indexOf(activeWordObj);
+            activeWordObj = cellData.words[(idx + 1) % cellData.words.length];
+        } else if (!cellData.words.includes(activeWordObj)) {
+            activeWordObj = cellData.words[0];
+        }
+        activeCellCoord = { row: r, col: c };
+        updateActiveClueBanner();
+        renderTTSBoard();
+        renderTTSClues();
+    }
+
+    function selectWordFromClue(num, dir) {
+        playTone('click');
+        const lvData = ttsLevelsData[currentTTSLevel];
+        const found = lvData.words.find(w => w.num === num && w.dir === dir);
+        if (!found) return;
+        activeWordObj = found;
+        activeCellCoord = { row: found.row, col: found.col };
+        updateActiveClueBanner();
+        renderTTSBoard();
+        renderTTSClues();
+    }
+
+    function updateActiveClueBanner() {
+        if (!activeWordObj) return;
+        const dirBadge = document.getElementById('tts-active-dir-badge');
+        const banner = document.getElementById('tts-active-clue-banner');
+        const lenBadge = document.getElementById('tts-active-len-badge');
+
+        dirBadge.textContent = `${activeWordObj.num} ${activeWordObj.dir === 'across' ? 'MENDATAR' : 'MENURUN'}`;
+        banner.textContent = activeWordObj.clue;
+        lenBadge.textContent = `${activeWordObj.answer.length} Huruf`;
+
+        const wKey = `${activeWordObj.num}_${activeWordObj.dir}`;
+        const expEl = document.getElementById('tts-explanation-text');
+        if (ttsSolvedWords[currentTTSLevel].has(wKey)) {
+            expEl.innerHTML = `<span class="text-emerald-300 font-black">✓ KORESPONDENSI BENAR (${activeWordObj.answer}):</span> ${activeWordObj.explanation}`;
+        } else if (ttsCheckedWordsStatus[currentTTSLevel][wKey] === 'wrong') {
+            expEl.innerHTML = `<span class="text-rose-400 font-black">✗ JAWABAN MASIH KURANG TEPAT:</span> Periksa kembali susunan huruf pada soal <strong>${activeWordObj.num} ${activeWordObj.dir === 'across' ? 'Mendatar' : 'Menurun'}</strong>. Kunci jawaban baru terbuka setelah seluruh huruf benar.`;
+        }
+    }
+
+    function renderTTSClues() {
+        const lvData = ttsLevelsData[currentTTSLevel];
+        const acrossBox = document.getElementById('tts-clues-across');
+        const downBox = document.getElementById('tts-clues-down');
+
+        const acrossWords = lvData.words.filter(w => w.dir === 'across');
+        const downWords = lvData.words.filter(w => w.dir === 'down');
+
+        const solvedAcross = acrossWords.filter(w => ttsSolvedWords[currentTTSLevel].has(`${w.num}_${w.dir}`)).length;
+        const solvedDown = downWords.filter(w => ttsSolvedWords[currentTTSLevel].has(`${w.num}_${w.dir}`)).length;
+
+        document.getElementById('tts-across-count').textContent = `${solvedAcross}/${acrossWords.length} Selesai`;
+        document.getElementById('tts-down-count').textContent = `${solvedDown}/${downWords.length} Selesai`;
+
+        const buildItem = (w) => {
+            const wKey = `${w.num}_${w.dir}`;
+            const isSolved = ttsSolvedWords[currentTTSLevel].has(wKey);
+            const isWrong = ttsCheckedWordsStatus[currentTTSLevel][wKey] === 'wrong';
+            const isActive = activeWordObj && activeWordObj.num === w.num && activeWordObj.dir === w.dir;
+
+            let statusPill = `<span class="text-[11px] font-extrabold text-slate-400">(${w.answer.length} Huruf)</span>`;
+            if (isSolved) {
+                statusPill = `<span class="px-2 py-0.5 rounded bg-emerald-500/25 text-emerald-300 text-[10px] font-black uppercase">✓ Benar: ${w.answer}</span>`;
+            } else if (isWrong) {
+                statusPill = `<span class="px-2 py-0.5 rounded bg-rose-500/25 text-rose-300 text-[10px] font-black uppercase">✗ Belum Tepat</span>`;
+            }
+
+            return `
+                <div onclick="selectWordFromClue(${w.num}, '${w.dir}')" class="p-2.5 rounded-xl border transition cursor-pointer ${isActive ? 'bg-sky-500/20 border-sky-400' : (isSolved ? 'bg-emerald-950/40 border-emerald-500/40' : 'bg-slate-900/80 border-slate-800 hover:border-slate-600')}">
+                    <div class="flex items-center justify-between gap-2 mb-0.5">
+                        <span class="font-black text-sm ${isSolved ? 'text-emerald-300' : 'text-amber-300'}">Soal #${w.num}</span>
+                        ${statusPill}
+                    </div>
+                    <p class="text-[15px] font-medium text-slate-100 leading-snug">${w.clue}</p>
+                </div>
+            `;
+        };
+
+        acrossBox.innerHTML = acrossWords.map(buildItem).join('');
+        downBox.innerHTML = downWords.map(buildItem).join('');
+    }
+
+    function renderVirtualKeyboard() {
+        const kb = document.getElementById('tts-virtual-keyboard');
+        if (!kb) return;
+        const rows = [
+            ['Q','W','E','R','T','Y','U','I','O','P'],
+            ['A','S','D','F','G','H','J','K','L'],
+            ['Z','X','C','V','B','N','M','BACKSPACE']
+        ];
+        kb.innerHTML = rows.map(row => `
+            <div class="flex items-center justify-center gap-1">
+                ${row.map(k => {
+                    if (k === 'BACKSPACE') {
+                        return `<button onclick="handleTTSKeyInput('BACKSPACE')" class="px-3 h-7 rounded-lg bg-rose-600/80 hover:bg-rose-500 text-white font-black text-xs flex items-center gap-1 shadow"><i class="fa-solid fa-delete-left"></i> Hapus</button>`;
+                    }
+                    return `<button onclick="handleTTSKeyInput('${k}')" class="w-8 h-7 rounded-lg bg-slate-800 hover:bg-amber-400 hover:text-slate-950 border border-slate-700 text-white font-extrabold text-xs transition shadow">${k}</button>`;
+                }).join('')}
+            </div>
+        `).join('');
+    }
+
+    function handleTTSKeyInput(key) {
+        if (!activeWordObj || !activeCellCoord) return;
+        const { map } = getLevelCellMap(currentTTSLevel);
+        const curKey = `${activeCellCoord.row},${activeCellCoord.col}`;
+        const cellData = map[curKey];
+        if (!cellData) return;
+
+        // Clear wrong status on edit
+        cellData.words.forEach(w => {
+            const wKey = `${w.num}_${w.dir}`;
+            if (!ttsSolvedWords[currentTTSLevel].has(wKey)) {
+                delete ttsCheckedWordsStatus[currentTTSLevel][wKey];
+            }
+        });
+
+        const isCellLocked = cellData.words.every(w => ttsSolvedWords[currentTTSLevel].has(`${w.num}_${w.dir}`));
+
+        if (key === 'BACKSPACE') {
+            playTone('click');
+            if (!isCellLocked && ttsUserInputs[currentTTSLevel][curKey]) {
+                delete ttsUserInputs[currentTTSLevel][curKey];
+            } else {
+                moveCursorInActiveWord(-1);
+                const prevKey = `${activeCellCoord.row},${activeCellCoord.col}`;
+                const prevData = map[prevKey];
+                const prevLocked = prevData && prevData.words.every(w => ttsSolvedWords[currentTTSLevel].has(`${w.num}_${w.dir}`));
+                if (!prevLocked) delete ttsUserInputs[currentTTSLevel][prevKey];
+            }
+            renderTTSBoard();
+            renderTTSClues();
+            return;
+        }
+
+        if (/^[A-Z]$/.test(key)) {
+            playTone('click');
+            if (!isCellLocked) {
+                ttsUserInputs[currentTTSLevel][curKey] = key;
+            }
+            moveCursorInActiveWord(1);
+            renderTTSBoard();
+            renderTTSClues();
+        }
+    }
+
+    function moveCursorInActiveWord(step) {
+        if (!activeWordObj || !activeCellCoord) return;
+        const len = activeWordObj.answer.length;
+        let curIdx = activeWordObj.dir === 'across'
+            ? activeCellCoord.col - activeWordObj.col
+            : activeCellCoord.row - activeWordObj.row;
+
+        const nextIdx = curIdx + step;
+        if (nextIdx >= 0 && nextIdx < len) {
+            activeCellCoord = {
+                row: activeWordObj.dir === 'across' ? activeWordObj.row : activeWordObj.row + nextIdx,
+                col: activeWordObj.dir === 'across' ? activeWordObj.col + nextIdx : activeWordObj.col
+            };
+        }
+    }
+
+    window.addEventListener('keydown', (e) => {
+        const gameScreen = document.getElementById('game-screen-container');
+        if (!gameScreen || gameScreen.classList.contains('hidden')) return;
+        if (['INPUT', 'TEXTAREA'].includes(document.activeElement?.tagName)) return;
+
+        if (e.key === 'Backspace') {
+            e.preventDefault();
+            handleTTSKeyInput('BACKSPACE');
+        } else if (e.key === 'Enter') {
+            e.preventDefault();
+            checkCurrentTTSWord();
+        } else if (/^[a-zA-Z]$/.test(e.key)) {
+            e.preventDefault();
+            handleTTSKeyInput(e.key.toUpperCase());
+        }
+    });
+
+    function checkCurrentTTSWord() {
+        if (!activeWordObj) return;
+        const w = activeWordObj;
+        const wKey = `${w.num}_${w.dir}`;
+        if (ttsSolvedWords[currentTTSLevel].has(wKey)) return;
+
+        let userStr = '';
+        let isComplete = true;
+        for (let i = 0; i < w.answer.length; i++) {
+            const r = w.dir === 'across' ? w.row : w.row + i;
+            const c = w.dir === 'across' ? w.col + i : w.col;
+            const ch = ttsUserInputs[currentTTSLevel][`${r},${c}`] || '';
+            if (!ch) isComplete = false;
+            userStr += ch;
+        }
+
+        const expEl = document.getElementById('tts-explanation-text');
+        if (!isComplete) {
+            playTone('wrong');
+            expEl.innerHTML = `<span class="text-amber-300 font-extrabold">Kotak Belum Lengkap!</span> Silakan isi seluruh kotak huruf pada soal <strong>#${w.num} ${w.dir === 'across' ? 'Mendatar' : 'Menurun'}</strong> terlebih dahulu sebelum memeriksa jawaban.`;
+            return;
+        }
+
+        if (userStr === w.answer) {
+            playTone('correct');
+            ttsSolvedWords[currentTTSLevel].add(wKey);
+            ttsCheckedWordsStatus[currentTTSLevel][wKey] = 'correct';
+            ttsScore += 20;
+            expEl.innerHTML = `<span class="text-emerald-300 font-black">✓ KOREKSI: JAWABAN BENAR!</span> Kata Kunci: <strong>${w.answer}</strong> — ${w.explanation}`;
+            checkIfLevelFullyCompleted();
+        } else {
+            playTone('wrong');
+            ttsCheckedWordsStatus[currentTTSLevel][wKey] = 'wrong';
+            expEl.innerHTML = `<span class="text-rose-400 font-black">✗ KOREKSI: JAWABAN MASIH SALAH!</span> Isian Anda (<strong>${userStr}</strong>) belum tepat. Perbaiki kembali kotak yang berwarna merah!`;
+        }
+
+        renderTTSBoard();
+        renderTTSClues();
+        updateTTSHUD();
+    }
+
+    function checkEntireTTSLevel() {
+        const lvData = ttsLevelsData[currentTTSLevel];
+        let anyIncomplete = false;
+
+        lvData.words.forEach(w => {
+            for (let i = 0; i < w.answer.length; i++) {
+                const r = w.dir === 'across' ? w.row : w.row + i;
+                const c = w.dir === 'across' ? w.col + i : w.col;
+                if (!ttsUserInputs[currentTTSLevel][`${r},${c}`]) anyIncomplete = true;
+            }
+        });
+
+        const expEl = document.getElementById('tts-explanation-text');
+        if (anyIncomplete) {
+            playTone('wrong');
+            expEl.innerHTML = `<span class="text-amber-300 font-extrabold">Masih Ada Kotak Kosong!</span> Peserta wajib mengisi seluruh kotak huruf pada Level ${currentTTSLevel} sebelum melakukan pemeriksaan level.`;
+            return;
+        }
+
+        let newlySolved = 0;
+        let wrongCount = 0;
+
+        lvData.words.forEach(w => {
+            const wKey = `${w.num}_${w.dir}`;
+            let userStr = '';
+            for (let i = 0; i < w.answer.length; i++) {
+                const r = w.dir === 'across' ? w.row : w.row + i;
+                const c = w.dir === 'across' ? w.col + i : w.col;
+                userStr += (ttsUserInputs[currentTTSLevel][`${r},${c}`] || '');
+            }
+            if (userStr === w.answer) {
+                if (!ttsSolvedWords[currentTTSLevel].has(wKey)) {
+                    ttsSolvedWords[currentTTSLevel].add(wKey);
+                    ttsScore += 20;
+                    newlySolved++;
+                }
+                ttsCheckedWordsStatus[currentTTSLevel][wKey] = 'correct';
+            } else {
+                ttsCheckedWordsStatus[currentTTSLevel][wKey] = 'wrong';
+                wrongCount++;
+            }
+        });
+
+        renderTTSBoard();
+        renderTTSClues();
+        updateTTSHUD();
+
+        if (wrongCount === 0) {
+            playTone('correct');
+            checkIfLevelFullyCompleted();
+        } else {
+            playTone('wrong');
+            expEl.innerHTML = `<span class="text-amber-300 font-black">HASIL KOREKSI LEVEL ${currentTTSLevel}:</span> <strong>${lvData.words.length - wrongCount} Benar</strong> dan <strong class="text-rose-400">${wrongCount} Masih Salah</strong> (ditandai warna merah). Silakan perbaiki kotak yang salah lalu klik Periksa Level lagi!`;
+        }
+    }
+
+    function useTTSHint() {
+        if (ttsHintsLeft <= 0 || !activeWordObj) {
+            playTone('wrong');
+            return;
+        }
+        const w = activeWordObj;
+        for (let i = 0; i < w.answer.length; i++) {
+            const r = w.dir === 'across' ? w.row : w.row + i;
+            const c = w.dir === 'across' ? w.col + i : w.col;
+            const key = `${r},${c}`;
+            if (ttsUserInputs[currentTTSLevel][key] !== w.answer[i]) {
+                ttsUserInputs[currentTTSLevel][key] = w.answer[i];
+                ttsHintsLeft--;
+                playTone('click');
+                renderTTSBoard();
+                updateTTSHUD();
+                return;
+            }
+        }
+    }
+
+    function checkIfLevelFullyCompleted() {
+        const lvData = ttsLevelsData[currentTTSLevel];
+        const allSolved = lvData.words.every(w => ttsSolvedWords[currentTTSLevel].has(`${w.num}_${w.dir}`));
+        if (!allSolved) return;
+
+        const expEl = document.getElementById('tts-explanation-text');
+        if (currentTTSLevel < 5) {
+            if (unlockedTTSLevel <= currentTTSLevel) {
+                unlockedTTSLevel = currentTTSLevel + 1;
+            }
+            updateTTSLevelTabsUI();
+            expEl.innerHTML = `<span class="text-emerald-300 font-black">🎉 LUAR BIASA! LEVEL ${currentTTSLevel} TUNTAS!</span> Seluruh jawaban benar. <strong>Level ${currentTTSLevel + 1}</strong> kini telah terbuka!`;
+        } else {
+            showCompletionCertificate();
+        }
+    }
+
+    function updateTTSHUD() {
+        document.getElementById('hud-hints-val').textContent = ttsHintsLeft;
+        document.getElementById('hud-score-val').textContent = ttsScore;
+        let totalSolved = 0;
+        for (let lv = 1; lv <= 5; lv++) {
+            totalSolved += ttsSolvedWords[lv].size;
+        }
+        document.getElementById('hud-words-val').textContent = `${totalSolved}/30`;
+    }
+
+    // =========================================================================
+    // 4. PROFESSIONAL AWARD CERTIFICATE & JPG EXPORT
+    // =========================================================================
+    function showCompletionCertificate() {
+        playTone('correct');
+        const studentName = globalStudentName || draftTabel22.studentName || draftAktivitas22.studentName || draftAktivitas21.studentName || draftBagian2.studentName || 'Peserta Didik Berprestasi';
+        const studentClass = globalStudentClass || draftTabel22.studentClass || draftAktivitas22.studentClass || draftAktivitas21.studentClass || draftBagian2.studentClass || 'Kelas X';
+
+        document.getElementById('cert-participant-name').textContent = `${studentName} (${studentClass})`;
+        document.getElementById('appreciation-summary').innerHTML = `
+            Telah menyelesaikan dengan sangat baik seluruh rangkaian <strong>10 Bagian Materi Pembelajaran</strong>, <strong>Aktivitas Interaktif</strong>, serta menuntaskan <strong>Kuis Teka-Teki Silang (TTS) 5 Level (30 Soal)</strong> pada materi <em>"Membangun Perilaku Taat Hukum"</em> dengan perolehan skor akhir <strong class="text-amber-300">${ttsScore} Poin</strong>.
+        `;
+
+        const now = new Date();
+        const bulanIndo = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
+        const dateFormatted = `Bintan, ${now.getDate()} ${bulanIndo[now.getMonth()]} ${now.getFullYear()}`;
+        const dateEl = document.getElementById('cert-date-str');
+        if (dateEl) dateEl.textContent = dateFormatted;
+
+        openModal('modal-appreciation');
+    }
+
+    function downloadTTSCertificateJPG() {
+        const studentName = document.getElementById('cert-participant-name').textContent || 'Peserta Didik Berprestasi';
+        const dateStr = document.getElementById('cert-date-str').textContent || 'Bintan, Indonesia';
+
+        const canvas = document.createElement('canvas');
+        canvas.width = 1280;
+        canvas.height = 720;
+        const ctx = canvas.getContext('2d');
+
+        // Background
+        const grad = ctx.createLinearGradient(0, 0, 1280, 720);
+        grad.addColorStop(0, '#0f172a');
+        grad.addColorStop(0.5, '#090d16');
+        grad.addColorStop(1, '#020617');
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, 1280, 720);
+
+        // Double Gold Border
+        ctx.strokeStyle = '#fbbf24';
+        ctx.lineWidth = 8;
+        ctx.strokeRect(28, 28, 1224, 664);
+        ctx.strokeStyle = 'rgba(251, 191, 36, 0.45)';
+        ctx.lineWidth = 2;
+        ctx.strokeRect(44, 44, 1192, 632);
+
+        // Header
+        ctx.textAlign = 'center';
+        ctx.fillStyle = '#fbbf24';
+        ctx.font = 'bold 18px "Plus Jakarta Sans", sans-serif';
+        ctx.fillText('PIAGAM PENGHARGAAN RESMI • PENDIDIKAN PANCASILA KELAS X', 640, 115);
+
+        ctx.fillStyle = '#fef08a';
+        ctx.font = '900 44px "Plus Jakarta Sans", sans-serif';
+        ctx.fillText('SERTIFIKAT KETUNTASAN BELAJAR', 640, 175);
+
+        ctx.fillStyle = '#cbd5e1';
+        ctx.font = '18px "Plus Jakarta Sans", sans-serif';
+        ctx.fillText('Diberikan dengan bangga kepada:', 640, 235);
+
+        // Student Name Box
+        ctx.fillStyle = 'rgba(30, 41, 59, 0.9)';
+        ctx.fillRect(290, 260, 700, 74);
+        ctx.strokeStyle = '#fbbf24';
+        ctx.lineWidth = 3;
+        ctx.strokeRect(290, 260, 700, 74);
+
+        ctx.fillStyle = '#fbbf24';
+        ctx.font = 'bold 32px "Plus Jakarta Sans", sans-serif';
+        ctx.fillText(studentName.toUpperCase(), 640, 308);
+
+        // Body Description
+        ctx.fillStyle = '#e2e8f0';
+        ctx.font = '20px "Plus Jakarta Sans", sans-serif';
+        ctx.fillText('Atas keberhasilan menuntaskan 10 Bagian Materi Pembelajaran & Kuis TTS 5 Level (30 Soal)', 640, 395);
+        ctx.fillStyle = '#38bdf8';
+        ctx.font = 'bold 22px "Plus Jakarta Sans", sans-serif';
+        ctx.fillText('Bab 2: Membangun Perilaku Taat Hukum', 640, 435);
+        ctx.fillStyle = '#34d399';
+        ctx.font = 'bold 22px "Plus Jakarta Sans", sans-serif';
+        ctx.fillText(`Total Skor Akhir: ${ttsScore} Poin`, 640, 475);
+
+        // Official Seal Left
+        ctx.beginPath();
+        ctx.arc(160, 585, 48, 0, Math.PI * 2);
+        ctx.fillStyle = '#fbbf24';
+        ctx.fill();
+        ctx.fillStyle = '#020617';
+        ctx.font = '900 16px "Plus Jakarta Sans", sans-serif';
+        ctx.fillText('RESMI', 160, 591);
+
+        // Signature Right
+        ctx.textAlign = 'right';
+        ctx.fillStyle = '#fbbf24';
+        ctx.font = 'bold 16px "Plus Jakarta Sans", sans-serif';
+        ctx.fillText(dateStr, 1170, 545);
+        ctx.fillStyle = '#cbd5e1';
+        ctx.font = '16px "Plus Jakarta Sans", sans-serif';
+        ctx.fillText('Guru Mata Pelajaran,', 1170, 572);
+        ctx.fillStyle = '#fef08a';
+        ctx.font = 'bold 20px "Plus Jakarta Sans", sans-serif';
+        ctx.fillText('Anggi Perdana, S.Pd., Gr.', 1170, 625);
+
+        const link = document.createElement('a');
+        link.download = `Sertifikat_MPI_${studentName.replace(/[^a-zA-Z0-9]/g, '_')}.jpg`;
+        link.href = canvas.toDataURL('image/jpeg', 0.95);
+        link.click();
+    }
+
+    // =========================================================================
+    // 5. MODAL, FULLSCREEN & WEB AUDIO SYNTHESIZER
+    // =========================================================================
+    function openModal(id) {
+        playTone('click');
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.classList.remove('hidden');
+        if (id === 'modal-materi') renderMateriSlide();
+    }
+
+    function closeModal(id) {
+        playTone('click');
+        const el = document.getElementById(id);
+        if (el) el.classList.add('hidden');
+    }
+
+    function toggleFullScreen() {
+        playTone('click');
+        const docEl = document.documentElement;
+        const requestFS = docEl.requestFullscreen || docEl.webkitRequestFullscreen || docEl.msRequestFullscreen;
+        const exitFS = document.exitFullscreen || document.webkitExitFullscreen || document.msExitFullscreen;
+        const isFS = document.fullscreenElement || document.webkitFullscreenElement;
+
+        if (!isFS && requestFS) {
+            requestFS.call(docEl).then(() => {
+                if (screen.orientation && screen.orientation.lock) {
+                    screen.orientation.lock('landscape').catch(() => {});
+                }
+            }).catch(() => {});
+        } else if (isFS && exitFS) {
+            exitFS.call(document).catch(() => {});
+        }
+        setTimeout(updateStageScale, 150);
+    }
+
+    let audioCtx = null;
+    let isAudioMuted = false;
+
+    function initAudio() {
+        if (!audioCtx) {
+            const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+            if (AudioContextClass) audioCtx = new AudioContextClass();
+        }
+        if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+    }
+
+    function toggleAudioMute() {
+        isAudioMuted = !isAudioMuted;
+        const icon = document.getElementById('icon-audio-toggle');
+        if (icon) {
+            icon.className = isAudioMuted ? 'fa-solid fa-volume-xmark text-sm text-rose-400' : 'fa-solid fa-volume-high text-sm text-amber-300';
+        }
+        if (!isAudioMuted) playTone('click');
+    }
+
+    function playTone(type) {
+        if (isAudioMuted) return;
+        try {
+            initAudio();
+            if (!audioCtx) return;
+            const now = audioCtx.currentTime;
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+
+            if (type === 'click') {
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(520, now);
+                gain.gain.setValueAtTime(0.06, now);
+                gain.gain.exponentialRampToValueAtTime(0.001, now + 0.07);
+                osc.start(now);
+                osc.stop(now + 0.07);
+            } else if (type === 'correct') {
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(523.25, now);
+                osc.frequency.setValueAtTime(659.25, now + 0.09);
+                osc.frequency.setValueAtTime(783.99, now + 0.18);
+                gain.gain.setValueAtTime(0.12, now);
+                gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+                osc.start(now);
+                osc.stop(now + 0.35);
+            } else if (type === 'wrong') {
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(220, now);
+                osc.frequency.setValueAtTime(175, now + 0.12);
+                gain.gain.setValueAtTime(0.09, now);
+                gain.gain.exponentialRampToValueAtTime(0.001, now + 0.28);
+                osc.start(now);
+                osc.stop(now + 0.28);
+            }
+        } catch (e) {}
+    }
+
+    // Initial render
+    updateCoverProgressUI();
+</script>
+</body>
+</html>
